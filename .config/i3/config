@@ -196,8 +196,8 @@ exec_always setxkbmap -layout us,latam -option "grp:switch,compose:rctrl"
 exec xinput set-int-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Tapping Enabled" 8 1
 
 # Screenshot custom region and copy to clipboard
-bindsym --release Ctrl+Shift+Print exec scrot -s -e 'xclip -selection clipboard -target image/png -i $f && rm $f'
 bindsym --release Print exec scrot -s -e 'xclip -selection clipboard -target image/png -i $f && rm $f'
+bindsym --release Ctrl+Shift+Print exec sleep 4 && scrot -s -e 'xclip -selection clipboard -target image/png -i $f && rm $f'
 
 # Sreen brightness controls
 #bindsym XF86MonBrightnessUp   exec CURR=`xbacklight` && xbacklight + `echo "$CURR / 240.0 + 1" | bc`
@@ -227,14 +227,21 @@ bindsym $mod+Shift+grave  workspace prev
 #exec --no-startup-id xsetroot -solid "#121212"
 exec --no-startup-id feh --bg-scale $HOME/.config/i3/background.png
 
+# start compton
+exec_always --no-startup-id $HOME/.config/compton/launch.sh
+
 # start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # vertmon
-exec_always --no-startup-id $HOME/.screenlayout/vertical-two-monitor.sh -i3
+#exec_always --no-startup-id $HOME/.screenlayout/vertical-two-monitor.sh -i3
 
-
-## i3-gaps
+# i3-gaps
 for_window [class=".*"] border pixel 0
-
 gaps inner 9
+
+# To restart network-manager ~ NOT WORKING
+bindsym $mod+Shift+m exec /bin/systemctl restart network-manager
+
+# To open file explorer
+bindsym $mod+z exec nautilus
