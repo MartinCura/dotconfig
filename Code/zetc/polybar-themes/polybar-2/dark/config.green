@@ -49,6 +49,8 @@ shade5 = #981B5E20
 shade6 = #801B5E20
 shade7 = #681B5E20
 shade8 = #501B5E20
+shade9 = #381B5E20
+shade10 = #201B5E20
 ; shade1 = #1B5E20
 ; shade2 = #2E7D32
 ; shade3 = #388E3C
@@ -86,8 +88,8 @@ blue-gray = #546e7a
 [bar/main]
 width = 100%
 height = 42
-offset-x = 2%
-offset-y = 2%
+;offset-x = 2%
+;offset-y = 2%
 bottom = false
 fixed-center = true
 line-size = 3
@@ -96,21 +98,26 @@ radius = 0
 background = ${color.bg}
 foreground = ${color.fg}
 
-border-size = 10
+border-size = 8
 border-color = #00000000
 
 tray-position = center
+; tray-background = ${color.shade3}
+tray-maxsize = 200
+tray-offset-x = 5%
 
 ;This DPI looks good on the laptop
 dpi = 192
 
 locale = es_AR.UTF-8
-;en_US.UTF-8
+; locale = en_US.UTF-8
+
 
 ;==========================================================
 
-font-0 = "Fantasque Sans Mono:pixelsize=10;3"
-font-1 = "Iosevka Nerd Font:pixelsize=13;3"
+; font-0 = "Fantasque Sans Mono:pixelsize=12;3"
+font-0 = "Noto Sans:pixelsize=10;3"
+font-1 = "Iosevka Nerd Font:pixelsize=13;4"
 
 ;==========================================================
 
@@ -124,10 +131,10 @@ scroll-down = i3wm-wsprev
 
 modules-left = workspaces
 modules-center = date
-modules-right = mpd pkg volume xbacklight battery network powermenu
+modules-right = mpd pkg cpu memory volume xbacklight battery wireless-network network powermenu
 
-;override-redirect = true
-;wm-restack = i3
+; wm-restack = i3
+; override-redirect = true
 
 ;== Modules ========================================================
 
@@ -147,7 +154,7 @@ type = internal/i3
 pin-workspaces = false
 enable-click = true
 enable-scroll = true
-format-padding = 1
+format-padding = 0
 
 ws-icon-0 = 1;❶
 ws-icon-1 = 2;❷
@@ -159,31 +166,44 @@ ws-icon-6 = 7;❼
 ws-icon-7 = 8;❽
 ws-icon-8 = 9;❾
 ws-icon-9 = 10;❿
+ws-icon-default = 
 
-; icon-default = 
-
-format = <label-state> <label-mode>
-; format-background = ${color.shade2}
+format = " ‏ <label-state> ‏ <label-mode>"
+format-background = ${color.shade6}
 ; label-active = 
 ; label-occupied = 
 ; label-urgent = 
-; label-empty = 
+label-empty = 
 
 label-mode = %mode%
 label-mode-background = #e60053
 
-label-focused = %index%
+; focused = Active workspace on focused monitor
+label-focused = %icon%
+label-focused-padding = 2
 label-focused-foreground = #ffffff
 label-focused-background = #1B5E20
 label-focused-underline = #fba922
-label-focused-padding = 1
 
+; visible = Active workspace on unfocused monitor
+label-visible = %index%
+label-visible-padding = 3
+label-visible-foreground = #ffffff
+; label-visible-background = ${color.shade6}
+label-visible-background = #1B5E20
+label-visible-underline = #fba922
+
+; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
-label-unfocused-padding = 1
+label-unfocused-padding = 2
 label-unfocused-foreground = #ffffff
 label-unfocused-background = ${color.shade6}
 
-label-separator = |
+label-urgent = %icon%
+label-urgent-padding = 2
+label-urgent-background = ${color.orange}
+
+label-separator = "|"
 label-separator-background = ${color.shade6}
 label-separator-padding = 0
 
@@ -194,43 +214,7 @@ label-separator-padding = 0
 ;
 ; label-empty-foreground = ${color.fg}
 ; label-active-foreground = ${color.acolor}
-; label-urgent-foreground = ${color.curgent}
 ; label-occupied-foreground = ${color.coccupied}
-
-[module/google]
-type = custom/text
-content = 
-content-padding = 2
-content-foreground = ${color.fg-alt}
-click-left = xdg-open https://www.google.com/
-
-[module/github]
-type = custom/text
-content = 
-content-padding = 2
-content-foreground = ${color.fg-alt}
-click-left = xdg-open https://www.github.com/
-
-[module/reddit]
-type = custom/text
-content = 
-content-padding = 2
-content-foreground = ${color.fg-alt}
-click-left = xdg-open https://www.reddit.com/
-
-[module/facebook]
-type = custom/text
-content = 
-content-padding = 2
-content-foreground = ${color.fg-alt}
-click-left = xdg-open https://www.facebook.com/
-
-[module/youtube]
-type = custom/text
-content = 
-content-padding = 2
-content-foreground = ${color.fg-alt}
-click-left = xdg-open https://www.youtube.com/
 
 ;==========================================================
 
@@ -254,9 +238,106 @@ label-song-ellipsis = true
 [module/pkg]
 type = custom/script
 exec = scripts/updates.sh
-format-background = ${color.shade7}
+format-background = ${color.shade10}
 format-padding = 2
 tail = true
+
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format = <ramp-coreload> <label>
+; format-prefix = " CPU "
+format-background = ${color.shade9}
+format-padding = 2
+; format-underline = #f90000
+label = %percentage:2%%
+
+ramp-coreload-spacing = 0
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+; ramp-load-0 = ▁
+; ramp-load-1 = ▂
+; ramp-load-2 = ▃
+; ramp-load-3 = ▄
+; ramp-load-4 = ▅
+; ramp-load-5 = ▆
+; ramp-load-6 = ▇
+; ramp-load-7 = █
+
+
+[module/memory]
+type = internal/memory
+interval = 2
+format = <ramp-used>  <label>
+; format-prefix = " MEM "
+format-background = ${color.shade8}
+format-padding = 2
+; format-underline = #4bffdc
+label = %percentage_used%%
+
+ramp-used-0 = ▁
+ramp-used-1 = ▂
+ramp-used-2 = ▃
+ramp-used-3 = ▄
+ramp-used-4 = ▅
+ramp-used-5 = ▆
+ramp-used-6 = ▇
+ramp-used-7 = █
+
+
+[module/volume]
+type = internal/alsa
+format-volume = <ramp-volume>
+; format-volume = <ramp-volume> <label-volume>
+format-volume-padding = 3
+format-volume-background = ${color.shade7}
+label-volume = %percentage%%
+label-muted = "婢"
+label-muted-background = ${color.curgent}
+label-muted-padding = 2
+
+ramp-volume-0 = 奄
+ramp-volume-1 = 奄
+ramp-volume-2 = 奔
+ramp-volume-3 = 奔
+ramp-volume-4 = 墳
+ramp-volume-5 = 墳
+ramp-volume-6 = 墳
+
+
+[module/xbacklight]
+type = internal/xbacklight
+output = eDP1
+enable-scroll = true
+format = <ramp>
+; format = <ramp><label>
+
+; label = %percentage%%
+; label-background = ${color.shade6}
+; label-padding = 2
+
+; 🌎️
+ramp-padding = 2
+ramp-background = ${color.shade6}
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-5 = 
+ramp-6 = 
+ramp-7 = 
+ramp-8 = 
+ramp-9 = 
+ramp-10 = 
+
 
 [module/battery]
 type = internal/battery
@@ -275,10 +356,10 @@ format-discharging-background = ${color.shade5}
 format-discharging-padding = 2
 label-discharging = %percentage%%
 ; full
-format-full = <label-full>
+format-full = ""
 format-full-background = ${color.shade5}
 format-full-padding = 2
-format-full-prefix = " "
+; format-full-prefix = ""
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
@@ -306,46 +387,68 @@ animation-charging-6 = 
 
 animation-charging-framerate = 750
 
-[module/volume]
-type = internal/alsa
-format-volume = <ramp-volume> <label-volume>
-format-volume-padding = 2
-format-volume-background = ${color.shade6}
-label-volume = %percentage%%
-label-muted = "婢"
-label-muted-background = ${color.shade6}
-label-muted-padding = 2
 
-ramp-volume-0 = 奄
-ramp-volume-1 = 奄
-ramp-volume-2 = 奔
-ramp-volume-3 = 奔
-ramp-volume-4 = 墳
-ramp-volume-5 = 墳
-ramp-volume-6 = 墳
+[module/wireless-network]
+type = internal/network
+interface = wlp59s0
+interval = 2.0
 
-[module/xbacklight]
-type = internal/xbacklight
-enable-scroll = true
-format = <label><ramp>
+; Available tags:
+;   <label-connected> (default)
+;   <ramp-signal>
+; format-connected = <ramp-signal> <label-connected>
+format-connected = <label-connected>
 
-label = %percentage%%
-label-background = ${color.shade3}
-label-padding = 2
+; Available tags:
+;   <label-disconnected> (default)
+format-disconnected = <label-disconnected>
 
-; 🌎️
-ramp-background = ${color.shade3}
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
-ramp-3 = 
-ramp-4 = 
-ramp-5 = 
-ramp-6 = 
-ramp-7 = 
-ramp-8 = 
-ramp-9 = 
-ramp-10 = 
+; Available tags:
+;   <label-connected> (default)
+;   <label-packetloss>
+;   <animation-packetloss>
+format-packetloss = <label-packetloss> <animation-packetloss> <label-connected>
+
+; All labels support the following tokens:
+;   %ifname%    [wireless+wired]
+;   %local_ip%  [wireless+wired]
+;   %local_ip6% [wireless+wired]
+;   %essid%     [wireless]
+;   %signal%    [wireless]
+;   %upspeed%   [wireless+wired]
+;   %downspeed% [wireless+wired]
+;   %linkspeed% [wired]
+
+; Default: %ifname% %local_ip%
+label-connected = %essid% @ %local_ip%
+label-connected-foreground = #eefafafa
+label-connected-background = ${color.shade4}
+
+; Default: (none)
+label-disconnected = not connected
+label-disconnected-foreground = #66ffffff
+label-disconnected-background = ${color.shade4}
+
+; Default: (none)
+label-packetloss = pl %essid%
+label-packetloss-foreground = #eefafafa
+
+; ramp-signal-0 = 😱
+; ramp-signal-1 = 😠
+; ramp-signal-2 = 😒
+; ramp-signal-3 = 😊
+; ramp-signal-4 = 😃
+; ramp-signal-5 = 😈
+
+; Only applies if <animation-packetloss> is used
+animation-packetloss-0 = ⚠
+animation-packetloss-0-foreground = #ffa64c
+animation-packetloss-1 = 📶
+animation-packetloss-1-foreground = #000000
+; Framerate in milliseconds
+animation-packetloss-framerate = 500
+label-background = ${color.shade4}
+
 
 [module/network]
 type = custom/script
@@ -356,14 +459,17 @@ click-left = networkmanager_dmenu &
 click-right = networkmanager_dmenu &
 tail = true
 
+
 [module/date]
 type = internal/date
-interval = 30
-label =  %time%
+interval = 1
+label =  %date%      %time%
 label-padding = 2
-label-background = ${color.shade3}
-time =  %I:%M %p
-time-alt =  %Y-%m-%d
+label-background = ${color.shade6}
+date = %Y-%m-%d
+time = "%H:%M:%S  "
+; time-alt =  %Y-%m-%d
+
 
 [module/powermenu]
 type = custom/text

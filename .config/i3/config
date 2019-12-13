@@ -225,10 +225,12 @@ bindsym $mod+Shift+grave  workspace prev
 
 # background
 #exec --no-startup-id xsetroot -solid "#121212"
-exec --no-startup-id feh --bg-scale $HOME/.config/i3/background.png
+set $BACKGROUND_IMG $HOME/.config/i3/background.png
+set $BACKGROUND_IMG $HOME/Pictures/Wallpapers/birch_trees_forest_lake_reflection-wallpaper-3840x2160.jpg
+exec --no-startup-id feh --bg-scale $BACKGROUND_IMG
 
-# start compton
-exec_always --no-startup-id $HOME/.config/compton/launch.sh
+# start compton ~ not ran on reload (exec instead of exec_always)
+exec        --no-startup-id $HOME/.config/compton/launch.sh
 
 # start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -239,6 +241,12 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 # i3-gaps
 for_window [class=".*"] border pixel 0
 gaps inner 9
+gaps outer 30
+gaps top 15
+smart_gaps inverse_outer
+workspace $ws9 gaps horizontal 400
+workspace $ws9 gaps vertical 200
+workspace $ws9 gaps inner 100
 
 # To restart network-manager ~ NOT WORKING
 bindsym $mod+Shift+m exec /bin/systemctl restart network-manager
