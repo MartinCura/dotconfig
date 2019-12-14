@@ -7,6 +7,8 @@ if (( `xrandr | grep ' connected' | wc -l` < 2 )); then
   xrandr \
 	--output DP3 --off \
 	--output eDP1  --mode 3840x2160 --rotate normal --primary
+  xrandr --output DP3 --off
+  xrandr --output eDP1 --primary
   exit 1
 fi
 
