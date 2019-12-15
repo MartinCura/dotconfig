@@ -227,6 +227,7 @@ label-separator-padding = 0
 
 [module/workspaces-mnm]
 inherit = module/workspaces
+format = <label-state> <label-mode>
 format-background =
 label-focused = %index%
 label-urgent = %index%
