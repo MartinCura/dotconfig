@@ -225,11 +225,11 @@ exec redshift
 bindsym $mod+grave        workspace next
 bindsym $mod+Shift+grave  workspace prev
 
-# background
-#exec --no-startup-id xsetroot -solid "#121212"
-set $BACKGROUND_IMG $HOME/.config/i3/background.png
-set $BACKGROUND_IMG $HOME/Pictures/Wallpapers/birch_trees_forest_lake_reflection-wallpaper-3840x2160.jpg
-exec --no-startup-id feh --bg-scale $BACKGROUND_IMG
+## background
+##exec --no-startup-id xsetroot -solid "#121212"
+#set $BACKGROUND_IMG $HOME/.config/i3/background.png
+#set $BACKGROUND_IMG $HOME/Pictures/Wallpapers/birch_trees_forest_lake_reflection-wallpaper-3840x2160.jpg
+#exec --no-startup-id feh --bg-scale $BACKGROUND_IMG
 
 # start compton ~ not ran on reload (exec instead of exec_always)
 exec        --no-startup-id $HOME/.config/compton/launch.sh
@@ -238,7 +238,7 @@ exec        --no-startup-id $HOME/.config/compton/launch.sh
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # vertmon
-#exec_always --no-startup-id $HOME/.screenlayout/vertical-two-monitor.sh -i3
+exec_always --no-startup-id $HOME/.screenlayout/vertical-two-monitor.sh -i3
 
 # i3-gaps ########################################
 for_window [class=".*"] border pixel 0
@@ -386,3 +386,14 @@ bindsym $mod+Shift+f fullscreen toggle global
 
 # start gnome calculator windows as floating
 for_window [class="Gnome-calculator"] floating enable
+
+## scratchpad
+# move currently focused window to scratchpad
+bindsym $mod+Shift+b move scratchpad
+# show first scratchpad window
+bindsym $mod+b scratchpad show
+## Could create bindsym to retrieve specific windows from scratchpad
+
+# use pywal to change background
+bindsym $mod+c exec --no-startup-id wal -i $HOME/Pictures/Wallpapers/currents/
+exec --no-startup-id wal -i $HOME/Pictures/Wallpapers/currents/

@@ -23,6 +23,7 @@ trans = #00000000
 white = #FFFFFF
 black = #000000
 nicegray = #b03f3f3f
+transparent-black = #b2000000
 
 bg = ${color.trans}
 ; bg = #1F1F1F
@@ -99,7 +100,7 @@ background = ${color.bg}
 foreground = ${color.fg}
 
 border-size = 8
-border-color = #00000000
+border-color = ${color.bg}
 
 tray-position = center
 ; tray-background = ${color.shade3}
@@ -107,7 +108,8 @@ tray-maxsize = 200
 tray-offset-x = 5%
 
 ; This DPI looks good on my laptop
-dpi = 192
+;dpi = 192
+dpi = 168
 
 locale = es_AR.UTF-8
 ; locale = en_US.UTF-8
@@ -147,7 +149,8 @@ modules-center = date-mnm
 modules-right = mpd cpu-mnm memory-mnm volume-mnm battery-mnm network-mnm
 
 tray-position = right
-width = 99.5%
+;width = 99.5%
+width = 100%
 tray-offset-x = 0
 
 ; wm-restack = i3
@@ -298,6 +301,7 @@ ramp-coreload-7 = █
 [module/cpu-mnm]
 inherit = module/cpu
 format = <ramp-load>
+format-background =
 ramp-load-spacing = 0
 ramp-load-0 =
 ramp-load-1 =
@@ -331,6 +335,7 @@ ramp-used-7 = █
 [module/memory-mnm]
 inherit = module/memory
 format = <ramp-used>
+format-background =
 ramp-used-0 =
 ramp-used-1 =
 ramp-used-2 =
@@ -445,8 +450,9 @@ full-at = 50
 format-full =
 format-charging = <animation-charging>
 format-charging-background =
-;format-discharging = <ramp-capacity>
+format-discharging = <ramp-capacity>
 format-discharging-background =
+ramp-capacity-0 = ¡  !
 ramp-capacity-4 =
 ramp-capacity-5 =
 ramp-capacity-6 =
@@ -545,7 +551,7 @@ time = "%H:%M:%S     "
 [module/date-mnm]
 inherit = module/date
 label = %time%
-time = "  %H:%M:%S"
+time = "   %H:%M:%S"
 
 
 [module/powermenu]

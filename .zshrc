@@ -146,3 +146,6 @@ alias gs='git status'
 
 # dotconfig to version control local config
 alias dotconfig='/usr/bin/git --git-dir=$HOME/.home/ --work-tree=$HOME'
+
+# pywal
+(cat ~/.cache/wal/sequences &)
