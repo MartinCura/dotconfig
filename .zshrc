@@ -148,4 +148,8 @@ alias gs='git status'
 alias dotconfig='/usr/bin/git --git-dir=$HOME/.home/ --work-tree=$HOME'
 
 # pywal
-(cat ~/.cache/wal/sequences &)
+#(cat ~/.cache/wal/sequences &)
+
+# ssh-agent with gnome-keyring
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export SSH_AUTH_SOCK
