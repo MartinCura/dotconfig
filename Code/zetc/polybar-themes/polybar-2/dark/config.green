@@ -366,7 +366,8 @@ ramp-volume-6 = 墳
 
 [module/volume-mnm]
 inherit = module/volume
-format-volume =
+; format-volume =
+format-volume-background = ${color.trans}
 
 
 [module/xbacklight]
@@ -446,9 +447,9 @@ animation-charging-framerate = 750
 
 [module/battery-mnm]
 inherit = module/battery
-full-at = 50
+full-at = 60
 format-full =
-format-charging = <animation-charging>
+; format-charging = <animation-charging>
 format-charging-background =
 format-discharging = <ramp-capacity>
 format-discharging-background =

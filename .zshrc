@@ -153,3 +153,6 @@ alias dotconfig='/usr/bin/git --git-dir=$HOME/.home/ --work-tree=$HOME'
 # ssh-agent with gnome-keyring
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
+
+# Disable ^S as SIGSTOP because i like it as a quicksave (such as in Vim)
+stty -ixon

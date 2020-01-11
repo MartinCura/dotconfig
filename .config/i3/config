@@ -233,6 +233,8 @@ bindsym $mod+Shift+grave  workspace prev
 
 # start compton ~ not ran on reload (exec instead of exec_always)
 exec        --no-startup-id $HOME/.config/compton/launch.sh
+# kill compton to turn off transparency  # ToDo: toggle transparency of current window
+bindsym --release $mod+Shift+h exec --no-startup-id killall compton
 
 # start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -376,7 +378,7 @@ mode "$mode_gaps_left" {
 ##################################################
 
 # To restart network-manager ~ NOT WORKING
-bindsym $mod+Shift+m exec /bin/systemctl restart network-manager
+#bindsym $mod+Shift+???????? exec /bin/systemctl restart network-manager
 
 # To open file explorer
 bindsym $mod+z exec nautilus
