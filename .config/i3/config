@@ -198,20 +198,23 @@ exec_always setxkbmap -layout us,latam -option "grp:switch,compose:rctrl"
 exec xinput set-int-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Tapping Enabled" 8 1
 
 # Screenshot custom region and copy to clipboard
-bindsym --release Print exec scrot -s -e 'xclip -selection clipboard -target image/png -i $f && rm $f'
-bindsym --release Ctrl+Shift+Print exec sleep 4 && scrot -s -e 'xclip -selection clipboard -target image/png -i $f && rm $f'
+bindsym --release Print             exec             scrot -s -p -f --line 'style=dash' -e 'xclip -selection clipboard -target image/png -i $f && mkdir -p /tmp/Screenshots       && mv $f /tmp/Screenshots/'
+#bindsym --release Print             exec             scrot -s -e 'xclip -selection clipboard -target image/png -i $f && rm $f'
+bindsym --release Ctrl+Shift+Print  exec  sleep 4 && scrot -s -p -f --line 'style=dash' -e 'xclip -selection clipboard -target image/png -i $f && mkdir -p ~/Pictures/Screenshots && mv $f ~/Pictures/Screenshots/'
+#bindsym --release Ctrl+Shift+Print  exec  sleep 4 && scrot -s -e 'xclip -selection clipboard -target image/png -i $f && rm $f'
 
 # Sreen brightness controls
 #bindsym XF86MonBrightnessUp   exec CURR=`xbacklight` && xbacklight + `echo "$CURR / 240.0 + 1" | bc`
-bindsym XF86MonBrightnessUp   exec xbacklight + 1.25  # increase brightness
+bindsym XF86MonBrightnessUp    exec xbacklight + 1.25  # increase brightness
 #bindsym XF86MonBrightnessUp exec sudo python3 $HOME/.config/i3/change-backlight.py +
 #bindsym XF86MonBrightnessDown exec CURR=`xbacklight` && xbacklight - `echo "$CURR / 240.0 + 1" | bc`
-bindsym XF86MonBrightnessDown exec xbacklight - 1.25  # decrease brightness
+bindsym XF86MonBrightnessDown  exec xbacklight - 1.25  # decrease brightness
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume 0 +5%   # increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%   # decrease sound volume
-bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute 0 toggle  # mute sound
+set $sink 0
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $sink +5%   # increase sound volume
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume $sink -5%   # decrease sound volume
+bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute $sink toggle  # mute sound
 
 # Media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
