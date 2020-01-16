@@ -205,10 +205,12 @@ bindsym --release Ctrl+Shift+Print  exec  sleep 4 && scrot -s -p -f --line 'styl
 
 # Sreen brightness controls
 #bindsym XF86MonBrightnessUp   exec CURR=`xbacklight` && xbacklight + `echo "$CURR / 240.0 + 1" | bc`
-bindsym XF86MonBrightnessUp    exec xbacklight + 1.25  # increase brightness
+bindsym XF86MonBrightnessUp         exec xbacklight + 1.25  # increase brightness
+bindsym Ctrl+XF86MonBrightnessUp    exec xbacklight + 4
 #bindsym XF86MonBrightnessUp exec sudo python3 $HOME/.config/i3/change-backlight.py +
 #bindsym XF86MonBrightnessDown exec CURR=`xbacklight` && xbacklight - `echo "$CURR / 240.0 + 1" | bc`
-bindsym XF86MonBrightnessDown  exec xbacklight - 1.25  # decrease brightness
+bindsym XF86MonBrightnessDown       exec xbacklight - 1.25  # decrease brightness
+bindsym Ctrl+XF86MonBrightnessDown  exec xbacklight - 4
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%     # increase sound volume
