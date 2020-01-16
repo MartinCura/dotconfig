@@ -551,7 +551,8 @@ time = "%H:%M:%S     "
 
 [module/date-mnm]
 inherit = module/date
-label = %time%  |  %date%
+;label = %time%  |  %date%
+label = %date%   ·%time%
 time = "   %H:%M:%S"
 
 
