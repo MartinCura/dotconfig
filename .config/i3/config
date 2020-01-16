@@ -401,3 +401,6 @@ bindsym $mod+b scratchpad show
 # use pywal to change background
 bindsym $mod+c exec --no-startup-id wal -i $HOME/Pictures/Wallpapers/currents/
 exec --no-startup-id wal -i $HOME/Pictures/Wallpapers/currents/
+
+# fusuma for multitouch gestures
+exec --no-startup-id fusuma -d --config=$HOME/.config/fusuma/config.yml
