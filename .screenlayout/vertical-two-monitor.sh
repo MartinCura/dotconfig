@@ -5,10 +5,10 @@ IFS='\n\t'
 # less than 2 monitors, just exit
 if (( `xrandr | grep ' connected' | wc -l` < 2 )); then
   xrandr \
-	--output DP3 --off \
-	--output eDP1  --mode 3840x2160 --rotate normal --primary
-  xrandr --output DP3 --off
-  xrandr --output eDP1 --primary
+	--output DP-3 --off \
+	--output eDP-1  --mode 3840x2160 --rotate normal --primary
+  xrandr --output DP-3 --off
+  xrandr --output eDP-1 --primary
   exit 1
 fi
 
@@ -21,4 +21,4 @@ if (( $# > 0 )); then
 fi
 
 #xrandr --output DP-3 --mode 1920x1080 --pos 0x0 --rotate normal --primary --output DP-1 --off --output eDP-1 --mode 3840x2160 --pos 0x2160 --rotate normal --output DP-2 --off
-xrandr --output DP3  --mode 1920x1080 $SCALE_OPT1 $SCALE_OPT2 --pos 0x0 --rotate normal --primary                     --output eDP1  --mode 3840x2160 --pos 0x2160 --rotate normal
+xrandr --output DP-3  --mode 1920x1080 $SCALE_OPT1 $SCALE_OPT2 --pos 0x0 --rotate normal --primary                     --output eDP-1  --mode 3840x2160 --pos 0x2160 --rotate normal

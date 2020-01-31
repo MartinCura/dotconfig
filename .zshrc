@@ -156,3 +156,23 @@ export SSH_AUTH_SOCK
 
 # Disable ^S as SIGSTOP because i like it as a quicksave (such as in Vim)
 stty -ixon
+
+# Use transfer.sh for easy upload-and-share
+transfer() {
+	if [ $# -eq 0 ]; then
+		echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"
+		return 1
+	fi
+	tmpfile=$( mktemp -t transferXXX )
+	if tty -s; then
+		basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g')
+		curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile
+	else
+		curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile
+	fi
+	cat $tmpfile
+	rm -f $tmpfile
+}
+
+# CUDA bin
+export PATH="$PATH:/usr/local/cuda-10.2/bin"

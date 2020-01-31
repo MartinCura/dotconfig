@@ -1,0 +1,11 @@
+close_on_unfocus = 1
+show_calendar = 1
+mark_today = 1
+show_week_numbers = 1
+mainwindow_decorated = 1
+mainwindow_keep_above = 1
+
+;mainwindow_position = center
+;mainwindow_xoffset = 
+;mainwindow_yoffset = 
+

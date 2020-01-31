@@ -144,7 +144,7 @@ modules-right = mpd pkg cpu memory volume xbacklight battery wireless-network ne
 [bar/minimalist]
 inherit = bar/main
 
-modules-left = workspaces-mnm
+modules-left = workspaces-mnm space-separation calendar-line
 modules-center = date-mnm
 modules-right = mpd cpu-mnm memory-mnm volume-mnm battery-mnm network-mnm
 
@@ -542,17 +542,19 @@ format-background = ${color.orange}
 [module/date]
 type = internal/date
 interval = 1
-label = %date%      %time%
+;label = %date%      %time%
+label = "%{A1:killall gsimplecal; gsimplecal:} %date%    ·%time% %{A}      "
 label-padding = 2
 ; label-background = ${color.shade6}
 date = %Y-%m-%d
 time = "%H:%M:%S     "
 ; time-alt =  %Y-%m-%d
 
+
 [module/date-mnm]
 inherit = module/date
 ;label = %time%  |  %date%
-label = %date%   ·%time%
+;label = %{A1:killall gsimplecal; gsimplecal:} %date%    ·%time% %{A}
 time = "   %H:%M:%S"
 
 
@@ -564,5 +566,20 @@ content-background = ${color.shade2}
 content-foreground = ${color.fg}
 click-left = scripts/pmenu_1
 click-right = scripts/pmenu_1
+
+
+[module/space-separation]
+type = custom/text
+content = "        "
+
+
+[module/calendar-line]
+type = custom/script
+exec = scripts/calendar_line.sh
+interval = 150
+format-padding = 6
+;format-background = #40ffff00
+format-background = #1bffffff
+
 
 ;== EOF ========================================================

@@ -56,6 +56,10 @@ bindsym $mod+Down   focus down
 bindsym $mod+Up     focus up
 bindsym $mod+Right  focus right
 
+# one-handed way to switch to next window in workspace
+bindsym $mod+Tab         focus right
+bindsym $mod+Shift+Tab   focus left
+
 # move focused window
 bindsym $mod+Shift+j          move left
 bindsym $mod+Shift+k          move down
@@ -130,6 +134,12 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
+
+# move workspace to output in certain direction
+bindsym Ctrl+Shift+$mod+Left  move workspace to output left
+bindsym Ctrl+Shift+$mod+Down  move workspace to output down
+bindsym Ctrl+Shift+$mod+Up    move workspace to output up
+bindsym Ctrl+Shift+$mod+Right move workspace to output right
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -225,9 +235,11 @@ bindsym XF86AudioNext exec playerctl --ignore-player=vlc next
 # Night light through Redshift
 exec redshift
 
-# Switch to next workspace
-bindsym $mod+grave        workspace next
+## Switch to next workspace
+#bindsym $mod+grave        workspace next
 bindsym $mod+Shift+grave  workspace prev
+# Switch to previously focused workspace
+bindsym $mod+grave        workspace back_and_forth
 
 ## background
 ##exec --no-startup-id xsetroot -solid "#121212"
@@ -406,3 +418,11 @@ exec --no-startup-id wal -i $HOME/Pictures/Wallpapers/currents/
 
 # fusuma for multitouch gestures
 exec --no-startup-id fusuma -d --config=$HOME/.config/fusuma/config.yml
+
+# lock
+bindsym Ctrl+$mod+l exec --no-startup-id $HOME/.config/i3/rick_lock.sh
+
+bindsym Power exec --no-startup-id paplay /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga
+
+# place calendar "applet" where i want
+for_window [class="(?i)gsimplecal"] floating enable, move position mouse, move down 60 px
