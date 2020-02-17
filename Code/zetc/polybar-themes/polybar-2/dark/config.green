@@ -84,6 +84,9 @@ brown = #6d4c41
 grey = #757575
 blue-gray = #546e7a
 
+[settings]
+;pseudo-transparency = true
+
 ;==========================================================
 
 [bar/main]
@@ -152,6 +155,11 @@ tray-position = right
 ;width = 99.5%
 width = 100%
 tray-offset-x = 0
+tray-transparent = true
+;tray-transparent = false
+;tray-background = #000000
+tray-background = #000000
+
 
 ; wm-restack = i3
 ; override-redirect = true
