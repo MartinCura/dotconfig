@@ -149,16 +149,14 @@ inherit = bar/main
 
 modules-left = workspaces-mnm space-separation calendar-line
 modules-center = date-mnm
-modules-right = mpd cpu-mnm memory-mnm volume-mnm battery-mnm network-mnm
+modules-right = mpd cpu-mnm memory-mnm volume-mnm backlight battery-mnm network-mnm
 
 tray-position = right
 ;width = 99.5%
 width = 100%
 tray-offset-x = 0
-tray-transparent = true
-;tray-transparent = false
 ;tray-background = #000000
-tray-background = #000000
+tray-background = #00000000
 
 
 ; wm-restack = i3
@@ -380,7 +378,7 @@ format-volume-background = ${color.trans}
 
 [module/xbacklight]
 type = internal/xbacklight
-output = eDP1
+output = "eDP-1"
 enable-scroll = true
 format = <ramp>
 ; format = <ramp><label>
@@ -403,6 +401,33 @@ ramp-7 = 
 ramp-8 = 
 ramp-9 = 
 ramp-10 = 
+
+
+[module/xbacklight-mnm]
+inherit = module/xbacklight
+ramp-0 =
+ramp-1 =
+
+
+[module/backlight]
+type = internal/backlight
+card = intel_backlight
+enable_scroll = true
+
+format = <ramp>
+ramp-padding = 2
+ramp-background = ${color.trans}
+ramp-0 =
+ramp-1 = 
+ramp-2 =
+ramp-3 =
+ramp-4 =
+ramp-5 =
+ramp-6 =
+ramp-7 =
+ramp-8 =
+ramp-9 = 
+ramp-10 =
 
 
 [module/battery]

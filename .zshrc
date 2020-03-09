@@ -1,3 +1,8 @@
+##PS4='+ $(date "+%s.%N")\011 '
+##exec 3>&2 2>/tmp/zshstart.$$.log
+##set -x
+###zmodload zsh/zprof
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -109,7 +114,8 @@ export WORKON_HOME=$HOME/.virtualenvs
 export PROJECT_HOME=$HOME/Code
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 export VIRTUALENVWRAPPER_VIRTUALENV=$HOME/.local/bin/virtualenv
-source $HOME/.local/bin/virtualenvwrapper.sh
+#source $HOME/.local/bin/virtualenvwrapper.sh
+source $HOME/.local/bin/virtualenvwrapper_lazy.sh
 
 # activate local venv assuming it's in .venv/
 #alias activ='if [ -n $(source .venv/bin/activate) ]; then source ../.venv/bin/activate; fi'
@@ -193,3 +199,6 @@ function cd {
 	auto_pipenv_shell
 }
 auto_pipenv_shell
+
+##set +x
+##exec 2>&3 3>&-

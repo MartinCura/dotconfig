@@ -44,10 +44,16 @@ bindsym $mod+l          focus up
 bindsym $mod+semicolon  focus right
 
 # alternatively, you can use the cursor keys:
-bindsym $mod+Left   focus left
-bindsym $mod+Down   focus down
-bindsym $mod+Up     focus up
-bindsym $mod+Right  focus right
+bindsym $mod+Left       focus left
+bindsym $mod+Down       focus down
+bindsym $mod+Up         focus up
+bindsym $mod+Right      focus right
+
+# change focus to another container (ignoring windows in same container)
+bindsym $mod+Ctrl+Left  focus parent; focus left
+bindsym $mod+Ctrl+Down  focus parent; focus down
+bindsym $mod+Ctrl+Up    focus parent; focus up
+bindsym $mod+Ctrl+Right focus parent; focus right
 
 # one-handed way to switch to next window in workspace
 bindsym $mod+Tab         focus right
@@ -143,8 +149,9 @@ bindsym $mod+Shift+r restart
 # keyboard-friendly confirm
 bindsym $mod+Shift+e exec sh -c '[ $(echo "NO\nYES" | dmenu -sb "#ff6600" -i -p "Really exit i3 X session?") = "YES" ] && i3-msg exit'
 
-# resize window (you can also use the mouse for that)
+# resize window
 set $re_size 5
+set $big_re_size 50
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
 
@@ -162,6 +169,11 @@ mode "resize" {
         bindsym Down  resize grow   height $re_size px or $re_size ppt
         bindsym Up    resize shrink height $re_size px or $re_size ppt
         bindsym Right resize grow   width  $re_size px or $re_size ppt
+
+        bindsym Shift+Left  resize shrink width  $big_re_size px or $big_re_size ppt
+        bindsym Shift+Down  resize grow   height $big_re_size px or $big_re_size ppt
+        bindsym Shift+Up    resize shrink height $big_re_size px or $big_re_size ppt
+        bindsym Shift+Right resize grow   width  $big_re_size px or $big_re_size ppt
 
         # back to normal: Enter or Escape or $mod+r
         bindsym Return mode "default"
@@ -386,8 +398,8 @@ mode "$mode_gaps_left" {
 }
 ##################################################
 
-# To restart network-manager ~ NOT WORKING
-#bindsym $mod+Shift+???????? exec /bin/systemctl restart network-manager
+# To restart network-manager
+bindsym $mod+Shift+m exec sudo /bin/systemctl restart network-manager
 
 # To open file explorer
 bindsym $mod+z exec nautilus
@@ -413,9 +425,16 @@ exec --no-startup-id wal -i $HOME/Pictures/Wallpapers/currents/
 exec --no-startup-id fusuma -d --config=$HOME/.config/fusuma/config.yml
 
 # lock
-bindsym Ctrl+$mod+l exec --no-startup-id $HOME/.config/i3/rick_lock.sh
+bindsym Ctrl+$mod+l exec --no-startup-id   $HOME/.config/i3/rick_lock.sh
 
-bindsym Power exec --no-startup-id paplay /usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga
+# lock & sleep
+bindsym XF86PowerOff exec --no-startup-id  $HOME/.config/i3/rick_lock.sh & systemctl suspend
 
 # place calendar "applet" where i want
 for_window [class="(?i)gsimplecal"] floating enable, move position mouse, move down 60 px
+
+# NetworkManager applet
+exec --no-startup-id nm-applet
+
+# script to lock on lid close
+exec --no-startup-id $HOME/.config/i3/lid_close.sh &> $HOME/.config/i3/debug.log
