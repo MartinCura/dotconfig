@@ -88,6 +88,9 @@ bindsym $mod+e layout toggle split
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
+# toggle sticky (i think it must be floating already)
+bindsym $mod+Shift+s sticky toggle
+
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
@@ -438,3 +441,6 @@ exec --no-startup-id nm-applet
 
 # script to lock on lid close
 exec --no-startup-id $HOME/.config/i3/lid_close.sh &> $HOME/.config/i3/debug.log
+
+# calculator shortcut
+bindsym $mod+Shift+d exec gnome-calculator
