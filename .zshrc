@@ -200,5 +200,12 @@ function cd {
 }
 auto_pipenv_shell
 
+# GPG key
+export GPG_TTY=$(tty)
+# run gpg-agent (redundant somewhere?)
+eval $(gpg-agent --daemon) | grep -v "already running"
+
+
 ##set +x
 ##exec 2>&3 3>&-
+
