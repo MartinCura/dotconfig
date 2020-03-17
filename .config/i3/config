@@ -444,3 +444,6 @@ exec --no-startup-id $HOME/.config/i3/lid_close.sh &> $HOME/.config/i3/debug.log
 
 # calculator shortcut
 bindsym $mod+Shift+d exec gnome-calculator
+
+# script to reset wifi when device shows as "unavailable"
+exec --no-startup-id $HOME/.config/i3/wifi_resetter.sh &> $HOME/.config/i3/debug.log
