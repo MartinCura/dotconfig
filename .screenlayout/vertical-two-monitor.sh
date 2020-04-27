@@ -2,7 +2,7 @@
 #set -euo pipefail
 IFS='\n\t'
 
-# less than 2 monitors, just exit
+# less than 2 monitors
 if (( `xrandr | grep ' connected' | wc -l` < 2 )); then
   xrandr \
 	--output DP-3 --off \

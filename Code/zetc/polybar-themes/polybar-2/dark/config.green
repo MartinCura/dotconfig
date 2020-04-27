@@ -122,6 +122,8 @@ locale = es_AR.UTF-8
 ; font-0 = "Fantasque Sans Mono:pixelsize=12;3"
 font-0 = "Noto Sans:pixelsize=10;3"
 font-1 = "Iosevka Nerd Font:pixelsize=13;4"
+;Added while fixing something; doesn't hurt to be here
+font-2 = "Noto Color Emoji:pixelsize=10;3"
 
 ;====================================
 
@@ -147,9 +149,11 @@ modules-right = mpd pkg cpu memory volume xbacklight battery wireless-network ne
 [bar/minimalist]
 inherit = bar/main
 
-modules-left = workspaces-mnm space-separation calendar-line
+modules-left = workspaces-mnm space-separation
+;calendar-line
 modules-center = date-mnm
-modules-right = mpd cpu-mnm memory-mnm volume-mnm backlight battery-mnm network-mnm
+;mpd light
+modules-right = cpu-mnm memory-mnm volume-mnm backlight battery-mnm network-mnm
 
 tray-position = right
 ;width = 99.5%
@@ -169,6 +173,7 @@ tray-background = #00000000
 type = internal/i3
 ;xworkspaces
 pin-workspaces = false
+index-sort = true
 enable-click = true
 enable-scroll = true
 format-padding = 0
@@ -246,9 +251,9 @@ label-unfocused-background =
 label-focused-underline = #ffffff
 label-visible-underline = #8c8c8c
 ;${color.grey}
-label-visible-padding = 1
-label-focused-padding = 1
-label-unfocused-padding = 1
+label-visible-padding = 2
+label-focused-padding = 2
+label-unfocused-padding = 2
 label-separator =
 
 
@@ -430,6 +435,14 @@ ramp-9 = 
 ramp-10 =
 
 
+[module/light]
+type = custom/script
+exec = echo  $(light -G | cut -d. -f1) %
+scroll-up = light -A 5
+scroll-down = light -U 5
+interval = 2
+
+
 [module/battery]
 type = internal/battery
 battery = BAT0
@@ -443,7 +456,8 @@ format-charging-padding = 2
 label-charging = %percentage%%
 ; discharging
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-background = ${color.shade5}
+format-discharging-prefix = BATT
+;format-discharging-background = ${color.shade5}
 format-discharging-padding = 2
 label-discharging = %percentage%%
 ; full
@@ -478,6 +492,7 @@ animation-charging-6 = 
 
 animation-charging-framerate = 750
 
+
 [module/battery-mnm]
 inherit = module/battery
 full-at = 60
@@ -485,14 +500,15 @@ format-full =
 ; format-charging = <animation-charging>
 format-charging-background =
 format-discharging = <ramp-capacity>
-format-discharging-background =
+; format-discharging-background =
+format-discharging-prefix =
 ramp-capacity-0 = ¡  !
-ramp-capacity-4 =
-ramp-capacity-5 =
-ramp-capacity-6 =
-ramp-capacity-7 =
-ramp-capacity-8 =
-ramp-capacity-9 =
+;ramp-capacity-4 =
+;ramp-capacity-5 =
+;ramp-capacity-6 =
+;ramp-capacity-7 =
+;ramp-capacity-8 =
+;ramp-capacity-9 =
 
 
 [module/wireless-network]

@@ -106,6 +106,9 @@ export LANG=en_US.UTF-8
 
 # ####################################################################
 
+HISTSIZE=10000000
+SAVEHIST=$HISTSIZE
+
 # Re-run last command but with sudo
 alias fuck='sudo $(history -p \!\!)'
 
@@ -203,9 +206,11 @@ auto_pipenv_shell
 # GPG key
 export GPG_TTY=$(tty)
 # run gpg-agent (redundant somewhere?)
-eval $(gpg-agent --daemon) | grep -v "already running"
+eval $(gpg-agent --daemon 2> >(grep -v "already running"))
+
+# Scaled spotify
+alias spotify='spotify --force-device-scale-factor=1.5'
 
 
 ##set +x
 ##exec 2>&3 3>&-
-
