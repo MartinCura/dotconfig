@@ -160,7 +160,7 @@ alias dotconfig='/usr/bin/git --git-dir=$HOME/.home/ --work-tree=$HOME'
 #(cat ~/.cache/wal/sequences &)
 
 # ssh-agent with gnome-keyring
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh --daemonize)
 export SSH_AUTH_SOCK
 
 # Disable ^S as SIGSTOP because i like it as a quicksave (such as in Vim)
@@ -208,9 +208,10 @@ export GPG_TTY=$(tty)
 # run gpg-agent (redundant somewhere?)
 eval $(gpg-agent --daemon 2> >(grep -v "already running"))
 
-# Scaled spotify
+# scaled spotify
 alias spotify='spotify --force-device-scale-factor=1.5'
-
+# scaled zoom
+alias zoom='QT_SCALE_FACTOR=1.5 zoom'
 
 ##set +x
 ##exec 2>&3 3>&-

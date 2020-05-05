@@ -282,7 +282,7 @@ workspace $ws7 gaps horizontal 150
 workspace $ws7 gaps vertical 70
 workspace $ws7 gaps inner 100
 workspace $ws9 gaps horizontal 400
-workspace $ws9 gaps vertical 200
+workspace $ws9 gaps vertical 180
 workspace $ws9 gaps inner 100
 
 set $mode_gaps  Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft 
@@ -463,8 +463,10 @@ mode "empty" {
 	bindsym Enter  mode "default"
 }
 
-# open empty space (nowin)
-bindsym $mod+Shift+Return open
+## open empty space (nowin)
+#bindsym $mod+Shift+Return open
+# open barely visible terminal (with special class name so that compton takes care of it)
+bindsym $mod+Shift+Return exec gnome-terminal --class=barely-visible-terminal
 
 # Something i copied from airblader and i'm not sure what it should do
 ##for_window [instance="__nmtui"] floating enable

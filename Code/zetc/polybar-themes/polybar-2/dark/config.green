@@ -161,7 +161,7 @@ width = 100%
 tray-offset-x = 0
 ;tray-background = #000000
 tray-background = #00000000
-
+;border-bottom = 0
 
 ; wm-restack = i3
 ; override-redirect = true
