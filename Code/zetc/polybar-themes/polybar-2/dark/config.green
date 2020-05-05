@@ -149,7 +149,7 @@ modules-right = mpd pkg cpu memory volume xbacklight battery wireless-network ne
 [bar/minimalist]
 inherit = bar/main
 
-modules-left = workspaces-mnm space-separation
+modules-left = workspaces-mnm space-separation currently-playing
 ;calendar-line
 modules-center = date-mnm
 ;mpd light
@@ -582,6 +582,7 @@ click-left = networkmanager_dmenu &
 click-right = networkmanager_dmenu &
 tail = true
 
+
 [module/network-mnm]
 inherit = module/network
 exec = scripts/check-network-mnm
@@ -629,6 +630,13 @@ interval = 150
 format-padding = 6
 ;format-background = #40ffff00
 format-background = #1bffffff
+
+
+[module/currently-playing]
+type = custom/script
+exec = scripts/song_line.sh
+interval = 3
+format-padding = 2
 
 
 ;== EOF ========================================================
