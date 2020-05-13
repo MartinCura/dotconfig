@@ -364,7 +364,7 @@ label-muted-padding = 2
 
 format-volume = <ramp-volume>
 ; format-volume = <ramp-volume> <label-volume>
-format-volume-padding = 3
+format-volume-padding = 2
 format-volume-background = ${color.shade7}
 label-volume = %percentage%%
 ramp-volume-0 = 奄
@@ -593,7 +593,7 @@ format-background = ${color.orange}
 type = internal/date
 interval = 1
 ;label = %date%      %time%
-label = "%{A1:killall gsimplecal; gsimplecal:} %date%    ·%time% %{A}      "
+label = "%{A1:killall gsimplecal; gsimplecal:} %date%   ·%time% %{A}      "
 label-padding = 2
 ; label-background = ${color.shade6}
 date = %Y-%m-%d
@@ -635,6 +635,9 @@ format-background = #1bffffff
 [module/currently-playing]
 type = custom/script
 exec = scripts/song_line.sh
+click-left = playerctl --all-players play-pause
+click-middle = playerctl --ignore-player=vlc previous
+click-right = playerctl --ignore-player=vlc next
 interval = 3
 format-padding = 2
 
