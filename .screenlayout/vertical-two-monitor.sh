@@ -26,5 +26,6 @@ xrandr --output DP-3  --mode 1920x1080 $SCALE_OPT1 $SCALE_OPT2 --pos 0x0 --rotat
 
 # Map touchscreen inputs to its monitor output
 xinput --map-to-output 'Wacom HID 488F Finger' eDP-1
+xinput --map-to-output 'Wacom HID 488F Finger touch' eDP-1
 xinput --map-to-output 'Wacom HID 488F Pen stylus' eDP-1
 xinput --map-to-output 'Wacom HID 488F Pen eraser' eDP-1
