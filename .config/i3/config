@@ -216,8 +216,9 @@ exec_always setxkbmap -layout us,latam -option "grp:switch,compose:rctrl"
 exec xinput set-int-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Tapping Enabled" 8 1
 
 # Screenshot custom region and copy to clipboard
-bindsym --release Print             exec             scrot -s -p -f --line 'style=dash' -e 'xclip -selection clipboard -target image/png -i $f && mkdir -p /tmp/Screenshots       && mv $f /tmp/Screenshots/'
+#bindsym --release Print             exec             scrot -s -p -f --line 'style=dash' -e 'xclip -selection clipboard -target image/png -i $f && mkdir -p /tmp/Screenshots       && mv $f /tmp/Screenshots/'
 #bindsym --release Print             exec             scrot -s -e 'xclip -selection clipboard -target image/png -i $f && rm $f'
+bindsym --release Print             exec  mkdir -p /tmp/Screenshots/ && scrot -s -p -f --line 'style=dash' "/tmp/Screenshots/$(date +"%Y-%m-%dT_%H:%M:%SZ").png" && sleep 0.5 && xclip -selection clipboard -target image/png -i "$(ls -Art /tmp/Screenshots/* | tail -n 1)"
 bindsym --release Ctrl+Shift+Print  exec  sleep 4 && scrot -s -p -f --line 'style=dash' -e 'xclip -selection clipboard -target image/png -i $f && mkdir -p ~/Pictures/Screenshots && mv $f ~/Pictures/Screenshots/'
 #bindsym --release Ctrl+Shift+Print  exec  sleep 4 && scrot -s -e 'xclip -selection clipboard -target image/png -i $f && rm $f'
 
@@ -276,7 +277,7 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 for_window [class=".*"] border pixel 0
 gaps inner 9
 gaps outer 30
-gaps top 15
+gaps top 10
 smart_gaps inverse_outer
 workspace $ws7 gaps horizontal 150
 workspace $ws7 gaps vertical 70

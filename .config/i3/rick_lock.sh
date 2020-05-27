@@ -13,8 +13,12 @@ xset +dpms dpms 0 0 1
 echo "1" > $HOME/.config/i3/locked
 xset +dpms dpms 0 0 10
 
+#if (( `xrandr | grep ' connected' .... how to detect disabled monitors?
+LOCK_IMAGE=$HOME/.config/i3/default_lockscreen_single.png
+#LOCK_IMAGE=$HOME/.config/i3/default_lockscreen_vertmon.png
+
 #i3lock --nofork -i /tmp/lockscreen.png --ignore-empty-password --show-failed-attempts
-i3lock --nofork -i $HOME/.config/i3/default_lockscreen_vertmon.png --ignore-empty-password --show-failed-attempts
+i3lock --nofork -i $LOCK_IMAGE --ignore-empty-password --show-failed-attempts
 
 echo "0" > $HOME/.config/i3/locked
 revert
