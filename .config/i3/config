@@ -212,13 +212,15 @@ exec_always setxkbmap -layout us,latam -option "grp:switch,compose:rctrl"
 # In case synaptics config (/etc/X11/xorg...) doesn't work
 #exec --no-startup-id synclient HorizTwoFingerScroll=1
 
-# libinput mouse config
-exec xinput set-int-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Tapping Enabled" 8 1
+# libinput mouse config: tapping and faster mouse
+exec xinput set-int-prop   "SYNA2393:00 06CB:7A13 Touchpad" "libinput Tapping Enabled" 8 1
+exec xinput set-float-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Accel Speed" 0.5
+exec xinput set-float-prop "MOSART Semi. 2.4G Wireless Mouse" "libinput Accel Speed" 1.0
 
 # Screenshot custom region and copy to clipboard
 #bindsym --release Print             exec             scrot -s -p -f --line 'style=dash' -e 'xclip -selection clipboard -target image/png -i $f && mkdir -p /tmp/Screenshots       && mv $f /tmp/Screenshots/'
 #bindsym --release Print             exec             scrot -s -e 'xclip -selection clipboard -target image/png -i $f && rm $f'
-bindsym --release Print             exec  mkdir -p /tmp/Screenshots/ && scrot -s -p -f --line 'style=dash' "/tmp/Screenshots/$(date +"%Y-%m-%dT_%H:%M:%SZ").png" && sleep 0.5 && xclip -selection clipboard -target image/png -i "$(ls -Art /tmp/Screenshots/* | tail -n 1)"
+bindsym --release Print             exec  mkdir -p /tmp/Screenshots/ && scrot -s -p -f --line 'style=dash' "/tmp/Screenshots/$(date +"%Y-%m-%dT_%H:%M:%SZ").png" && sleep 1 && xclip -selection clipboard -target image/png -i "$(ls -Art /tmp/Screenshots/* | tail -n 1)"
 bindsym --release Ctrl+Shift+Print  exec  sleep 4 && scrot -s -p -f --line 'style=dash' -e 'xclip -selection clipboard -target image/png -i $f && mkdir -p ~/Pictures/Screenshots && mv $f ~/Pictures/Screenshots/'
 #bindsym --release Ctrl+Shift+Print  exec  sleep 4 && scrot -s -e 'xclip -selection clipboard -target image/png -i $f && rm $f'
 
@@ -261,7 +263,8 @@ bindsym $mod+Ctrl+grave         workspace back_and_forth
 #exec --no-startup-id feh --bg-scale $BACKGROUND_IMG
 
 # vertmon
-exec_always --no-startup-id $HOME/.screenlayout/vertical-two-monitor.sh -i3
+#exec_always --no-startup-id $HOME/.screenlayout/vertical-two-monitor.sh -i3
+exec_always --no-startup-id $HOME/.screenlayout/horizontal-two-monitor.sh -i3
 
 # start compton ~ not ran on reload (exec instead of exec_always)
 exec        --no-startup-id $HOME/.config/compton/launch.sh

@@ -21,4 +21,4 @@ if (( $# > 0 )); then
 fi
 
 #xrandr --output DP-3 --mode 1920x1080 --pos 0x0 --rotate normal --primary --output DP-1 --off --output eDP-1 --mode 3840x2160 --pos 0x2160 --rotate normal --output DP-2 --off
-xrandr --output DP-3  --mode 1920x1080 $SCALE_OPT1 $SCALE_OPT2 --pos 3840x0 --rotate normal --primary                     --output eDP-1  --mode 3840x2160 --pos 0x0 --rotate normal
+xrandr --output DP-3  --mode 1920x1080 $SCALE_OPT1 $SCALE_OPT2 --pos 0x0 --rotate normal --primary                     --output eDP-1  --mode 3840x2160 --pos 3840x0 --rotate normal

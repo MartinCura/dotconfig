@@ -11,7 +11,8 @@ xset +dpms dpms 0 0 1
 #convert -composite /tmp/screen_blur.png $HOME/.config/i3/Evil_Rick_Sprite.png -gravity South -geometry -20x1200 /tmp/lockscreen.png
 
 echo "1" > $HOME/.config/i3/locked
-xset +dpms dpms 0 0 10
+# Inactivity timeout set to 7 seconds
+xset +dpms dpms 0 0 7
 
 #if (( `xrandr | grep ' connected' .... how to detect disabled monitors?
 LOCK_IMAGE=$HOME/.config/i3/default_lockscreen_single.png

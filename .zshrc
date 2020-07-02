@@ -213,5 +213,7 @@ alias spotify='spotify --force-device-scale-factor=1.5'
 # scaled zoom
 alias zoom='QT_SCALE_FACTOR=1.5 zoom'
 
+alias dj='python manage.py'
+
 ##set +x
 ##exec 2>&3 3>&-
