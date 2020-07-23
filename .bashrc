@@ -157,3 +157,6 @@ export REACT_EDITOR=atom
 
 # dotconfig to version control local config
 alias dotconfig='/usr/bin/git --git-dir=$HOME/.home/ --work-tree=$HOME'
+
+
+# NOTE: i use ZSH most of the time, so this may be missing some useful lines; find them in .zshrc
