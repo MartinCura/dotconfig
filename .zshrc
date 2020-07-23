@@ -203,6 +203,9 @@ function cd {
 }
 auto_pipenv_shell
 
+# pipenv venv in project dir
+export PIPENV_VENV_IN_PROJECT=1
+
 # GPG key
 export GPG_TTY=$(tty)
 # run gpg-agent (redundant somewhere?)
