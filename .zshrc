@@ -21,6 +21,9 @@ ZSH_THEME="random"  # "robbyrussell" "cloud"
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
+# Opposite to previous option (can't be used together)
+ZSH_THEME_RANDOM_BLACKLIST=( "adben" )
+
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
 
@@ -73,7 +76,8 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git aws bundler docker docker-compose cp heroku rbenv rvm rake battery)
+#plugins=(git aws bundler docker docker-compose cp heroku rbenv rvm rake battery)
+plugins=(git docker docker-compose cp)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -217,6 +221,16 @@ alias spotify='spotify --force-device-scale-factor=1.5'
 alias zoom='QT_SCALE_FACTOR=1.5 zoom'
 
 alias dj='python manage.py'
+
+# giving root access to docker is dangerous; an alias so i don't forget sudo is fine
+alias docker='sudo docker'
+alias docker-compose='sudo docker-compose'
+
+# Geckodriver
+export PATH=$PATH:$HOME"/Code/zetc/selenium_experiments/geckodriver-v0.27.0-linux64"
+
+# Go (lang)
+export PATH=$PATH:/usr/local/go/bin
 
 ##set +x
 ##exec 2>&3 3>&-

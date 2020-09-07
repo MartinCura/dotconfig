@@ -64,10 +64,10 @@ bindsym $mod+Tab         focus right
 bindsym $mod+Shift+Tab   focus left
 
 # move focused window
-bindsym $mod+Shift+j          move left
-bindsym $mod+Shift+k          move down
-bindsym $mod+Shift+l          move up
-bindsym $mod+Shift+semicolon  move right
+bindsym $mod+Shift+j          move left  100
+bindsym $mod+Shift+k          move down  100
+bindsym $mod+Shift+l          move up    100
+bindsym $mod+Shift+semicolon  move right 100
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left       move left
@@ -83,6 +83,8 @@ bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
+# display popups only if they belong to the fullscreen application (should be default anyway)
+popup_during_fullscreen smart
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -213,6 +215,7 @@ mouse_warping none
 #   switch to Latin American only while pressing Right Alt
 #   Right Ctrl as Compose key
 exec_always setxkbmap -layout us,latam -option "grp:switch,compose:rctrl"
+bindsym $mod+Alt+space exec setxkbmap -layout us,latam -option "grp:switch,compose:rctrl"
 
 # In case synaptics config (/etc/X11/xorg...) doesn't work
 #exec --no-startup-id synclient HorizTwoFingerScroll=1
@@ -267,9 +270,9 @@ bindsym $mod+Ctrl+grave         workspace back_and_forth
 #set $BACKGROUND_IMG $HOME/Pictures/Wallpapers/birch_trees_forest_lake_reflection-wallpaper-3840x2160.jpg
 #exec --no-startup-id feh --bg-scale $BACKGROUND_IMG
 
-# vertmon
-#exec_always --no-startup-id $HOME/.screenlayout/vertical-two-monitor.sh -i3
-exec_always --no-startup-id $HOME/.screenlayout/horizontal-two-monitor.sh -i3
+# vertmon / hormon
+exec_always --no-startup-id $HOME/.screenlayout/vertical-two-monitor.sh -i3
+#exec_always --no-startup-id $HOME/.screenlayout/horizontal-two-monitor.sh -i3
 
 # start compton ~ not ran on reload (exec instead of exec_always)
 exec        --no-startup-id $HOME/.config/compton/launch.sh
@@ -281,12 +284,16 @@ bindsym --release $mod+Ctrl+Shift+h exec --no-startup-id $HOME/.config/compton/l
 # start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+
 ### i3-gaps ###
 for_window [class=".*"] border pixel 0
+
 gaps inner 9
 gaps outer 30
 gaps top 10
+
 smart_gaps inverse_outer
+
 workspace $ws7 gaps horizontal 150
 workspace $ws7 gaps vertical 70
 workspace $ws7 gaps inner 100
@@ -481,4 +488,19 @@ bindsym $mod+Shift+Return exec gnome-terminal --class=barely-visible-terminal
 ##for_window [instance="__nmtui"] floating enable
 ##bindsym $mod+Shift+w exec --no-startup-id $editor --name "__nmtui" -e "nmtui-connect"
 
-#
+## Notion
+# always start in scratchpad
+for_window [class="^notion$"] floating enable, move scratchpad, scratchpad hide
+# keybind to show or hide it
+bindsym $mod+n [class="^notion$"] scratchpad show
+# keybind to launch it the way i like it
+bindsym $mod+Shift+n exec $HOME/.config/i3/launch_notion.sh
+# launch it on first run? Should un-fullscreen it maybe; --no-startup-id ?
+#exec $HOME/.config/i3/launch_notion.sh
+
+## Discord
+# make pop-up float and have my preferred size and position (i still have to fullscreen it locally to avoid toolbar)
+for_window [class="discord" title="^(?!.*Discord).*$"] floating enable, sticky enable, resize set 889 500, move position 2900 px 830 px
+
+# got tired of focus wrapping, maybe i'll prefer if this is more deterministic
+focus_wrapping no

@@ -158,5 +158,8 @@ export REACT_EDITOR=atom
 # dotconfig to version control local config
 alias dotconfig='/usr/bin/git --git-dir=$HOME/.home/ --work-tree=$HOME'
 
+# Go (lang)
+export PATH=$PATH:/usr/local/go/bin
+
 
 # NOTE: i use ZSH most of the time, so this may be missing some useful lines; find them in .zshrc
