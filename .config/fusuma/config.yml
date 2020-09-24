@@ -1,9 +1,11 @@
 swipe:
   3:
     left:
-      command: 'xdotool key ctrl+shift+Tab'
+      # command: 'xdotool key ctrl+shift+Tab'
+      command: 'xdotool key ctrl+Page_Up'
     right:
-      command: 'xdotool key ctrl+Tab'
+      # command: 'xdotool key ctrl+Tab'
+      command: 'xdotool key ctrl+Page_Down'
     up:
       command: 'xdotool key --clearmodifiers XF86AudioRaiseVolume'
       swipe: 0.25
@@ -18,12 +20,12 @@ swipe:
     right:
       command: 'xdotool key super+grave'
     up:
-      command: 'xdotool key --clearmodifiers ctrl+XF86MonBrightnessUp'
+      command: 'xdotool key --clearmodifiers XF86MonBrightnessUp'
     down:
-      command: 'xdotool key --clearmodifiers ctrl+XF86MonBrightnessDown'
+      command: 'xdotool key --clearmodifiers XF86MonBrightnessDown'
 
 threshold:
-  swipe: 1
+  swipe: 0.7
   pinch: 1
 
 interval:

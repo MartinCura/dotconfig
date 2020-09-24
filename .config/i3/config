@@ -271,8 +271,8 @@ bindsym $mod+Ctrl+grave         workspace back_and_forth
 #exec --no-startup-id feh --bg-scale $BACKGROUND_IMG
 
 # vertmon / hormon
-exec_always --no-startup-id $HOME/.screenlayout/vertical-two-monitor.sh -i3
-#exec_always --no-startup-id $HOME/.screenlayout/horizontal-two-monitor.sh -i3
+#exec_always --no-startup-id $HOME/.screenlayout/vertical-two-monitor.sh -i3
+exec_always --no-startup-id $HOME/.screenlayout/horizontal-two-monitor.sh -i3
 
 # start compton ~ not ran on reload (exec instead of exec_always)
 exec        --no-startup-id $HOME/.config/compton/launch.sh
@@ -289,8 +289,8 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 for_window [class=".*"] border pixel 0
 
 gaps inner 9
-gaps outer 30
-gaps top 10
+#gaps outer 30
+#gaps top 10
 
 smart_gaps inverse_outer
 
@@ -483,6 +483,10 @@ mode "empty" {
 #bindsym $mod+Shift+Return open
 # open barely visible terminal (with special class name so that compton takes care of it)
 bindsym $mod+Shift+Return exec gnome-terminal --class=barely-visible-terminal
+
+# Floating terminal
+for_window [class="^floating-terminal$"] floating enable, resize set 1200 650, move position 2550 px 1400 px
+bindsym Ctrl+$mod+Return exec gnome-terminal --class=floating-terminal
 
 # Something i copied from airblader and i'm not sure what it should do
 ##for_window [instance="__nmtui"] floating enable

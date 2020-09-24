@@ -232,5 +232,11 @@ export PATH=$PATH:$HOME"/Code/zetc/selenium_experiments/geckodriver-v0.27.0-linu
 # Go (lang)
 export PATH=$PATH:/usr/local/go/bin
 
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
 ##set +x
 ##exec 2>&3 3>&-
