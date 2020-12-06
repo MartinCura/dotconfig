@@ -22,7 +22,7 @@ ZSH_THEME="random"  # "robbyrussell" "cloud"
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Opposite to previous option (can't be used together)
-ZSH_THEME_RANDOM_BLACKLIST=( "adben" )
+ZSH_THEME_RANDOM_BLACKLIST=( "adben" "amuse" "wuffers" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -236,6 +236,9 @@ export PATH=$PATH:/usr/local/go/bin
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# dat
+export PATH="$PATH:/home/martin/.dat/releases/dat-14.0.2-linux-x64"
 
 
 ##set +x

@@ -149,7 +149,7 @@ modules-right = mpd pkg cpu memory volume xbacklight battery wireless-network ne
 [bar/minimalist]
 inherit = bar/main
 
-modules-left = workspaces-mnm space-separation currently-playing
+modules-left = workspaces-mnm space-separation calendar-line space-separation currently-playing
 ;calendar-line
 modules-center = date-mnm
 ;mpd light volume-pulse
