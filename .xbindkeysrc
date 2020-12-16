@@ -68,6 +68,10 @@
 
 #####
 
+# Middle click with disabled X paste
+# Requires: sudo apt-get install xbindkeys xsel xdotool
+#"echo -n | xsel -n -i; eval $(xdotool getmouselocation --shell); pkill xbindkeys; xdotool mousemove --sync $X $Y click 2; xbindkeys"
+#  b:2 + Release
 
 # Button 8 switches to previous tab
 #"/usr/bin/xte 'keydown Control_L' 'keydown Shift_L' 'key Tab' 'keyup Shift_L' 'keyup Control_L'"

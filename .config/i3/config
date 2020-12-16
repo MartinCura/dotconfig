@@ -1,3 +1,4 @@
+
 # i3 (v4) config file
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
@@ -271,8 +272,9 @@ bindsym $mod+Ctrl+grave         workspace back_and_forth
 #exec --no-startup-id feh --bg-scale $BACKGROUND_IMG
 
 # vertmon / hormon
-exec_always --no-startup-id $HOME/.screenlayout/vertical-two-monitor.sh -i3
+#exec_always --no-startup-id $HOME/.screenlayout/vertical-two-monitor.sh -i3
 #exec_always --no-startup-id $HOME/.screenlayout/horizontal-two-monitor.sh -i3
+bindsym --release $mod+Ctrl+Shift+s exec --no-startup-id $HOME/.config/i3/switch_monitors_orientation.sh
 
 # start compton ~ not ran on reload (exec instead of exec_always)
 exec        --no-startup-id $HOME/.config/compton/launch.sh
@@ -295,7 +297,7 @@ gaps inner 9
 smart_gaps inverse_outer
 
 workspace $ws2 gaps inner 0
-workspace $ws2 gaps horizontal 170
+workspace $ws2 gaps horizontal 310
 workspace $ws2 gaps vertical 0
 workspace $ws7 gaps horizontal 150
 workspace $ws7 gaps vertical 70
