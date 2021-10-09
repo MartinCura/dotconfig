@@ -9,6 +9,12 @@ if (( `xrandr | grep ' connected' | wc -l` < 2 )); then
 	--output eDP-1  --mode 3840x2160 --rotate normal --primary
   xrandr --output DP-3 --off
   xrandr --output eDP-1 --primary
+  notify-send -a x "Switched to single monitor"
+
+  xinput --map-to-output 'Wacom HID 488F Finger' eDP-1
+  xinput --map-to-output 'Wacom HID 488F Finger touch' eDP-1
+  xinput --map-to-output 'Wacom HID 488F Pen stylus' eDP-1
+  xinput --map-to-output 'Wacom HID 488F Pen eraser' eDP-1
   exit 1
 fi
 
@@ -29,3 +35,6 @@ xinput --map-to-output 'Wacom HID 488F Finger' eDP-1
 xinput --map-to-output 'Wacom HID 488F Finger touch' eDP-1
 xinput --map-to-output 'Wacom HID 488F Pen stylus' eDP-1
 xinput --map-to-output 'Wacom HID 488F Pen eraser' eDP-1
+# TODO: fix this
+
+notify-send -a x "Switched to vertical (0)"

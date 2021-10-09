@@ -41,6 +41,8 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec rofi -show run -lines 7 -font "Fantasque Sans Mono 27" -theme "slate"
 # rofi window switcher
 bindsym $mod+x exec rofi -show window -lines 10 -font "Fantasque Sans Mono 27" -theme "slate"
+#bindsym $mod+Shift+z exec nop
+#bindsym --release Tab exec --no-startup-id sleep 1 && setxkbmap -option grab:break_actions && xdotool key XF86Ungrab && xdotool click --clearmodifiers 3 && sleep 1 && xdotool key Up Up Up Return
 
 # change focus
 bindsym $mod+j          focus left
@@ -123,6 +125,7 @@ set $ws10 "10"
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
+#; [con_mark="sp.*"] focus, scratchpad show
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
@@ -229,8 +232,8 @@ exec xinput set-float-prop "MOSART Semi. 2.4G Wireless Mouse" "libinput Accel Sp
 # Screenshot custom region and copy to clipboard
 #bindsym --release Print             exec             scrot -s -p -f --line 'style=dash' -e 'xclip -selection clipboard -target image/png -i $f && mkdir -p /tmp/Screenshots       && mv $f /tmp/Screenshots/'
 #bindsym --release Print             exec             scrot -s -e 'xclip -selection clipboard -target image/png -i $f && rm $f'
-bindsym --release Print             exec  mkdir -p /tmp/Screenshots/ && scrot -s -p -f --line 'style=dash' "/tmp/Screenshots/$(date +"%Y-%m-%dT_%H:%M:%SZ").png" && sleep 1 && xclip -selection clipboard -target image/png -i "$(ls -Art /tmp/Screenshots/* | tail -n 1)"
-bindsym --release Ctrl+Shift+Print  exec  sleep 4 && scrot -s -p -f --line 'style=dash' -e 'xclip -selection clipboard -target image/png -i $f && mkdir -p ~/Pictures/Screenshots && mv $f ~/Pictures/Screenshots/'
+bindsym --release Print             exec  mkdir -p /tmp/Screenshots/ && scrot -s -p -f --line 'style=dash' "/tmp/Screenshots/$(date +"%Y-%m-%dT_%H:%M:%SZ").png" && sleep 0.6 && xclip -selection clipboard -target image/png -i "$(ls -Art /tmp/Screenshots/* | tail -n 1)"
+bindsym --release Ctrl+Shift+Print  exec  sleep 3 && setxkbmap -option grab:break_actions && xdotool key XF86Ungrab && scrot -s -f --line 'style=dash' -e 'xclip -selection clipboard -target image/png -i $f && mkdir -p ~/Pictures/Screenshots && mv $f ~/Pictures/Screenshots/'
 #bindsym --release Ctrl+Shift+Print  exec  sleep 4 && scrot -s -e 'xclip -selection clipboard -target image/png -i $f && rm $f'
 
 # Sreen brightness controls
@@ -274,7 +277,8 @@ bindsym $mod+Ctrl+grave         workspace back_and_forth
 # vertmon / hormon
 #exec_always --no-startup-id $HOME/.screenlayout/vertical-two-monitor.sh -i3
 #exec_always --no-startup-id $HOME/.screenlayout/horizontal-two-monitor.sh -i3
-bindsym --release $mod+Ctrl+Shift+s exec --no-startup-id $HOME/.config/i3/switch_monitors_orientation.sh
+bindsym --release $mod+Ctrl+Shift+s exec --no-startup-id $HOME/.screenlayout/automonitors.sh
+exec --no-startup-id $HOME/.screenlayout/vertical-two-monitor.sh -i3
 
 # start compton ~ not ran on reload (exec instead of exec_always)
 exec        --no-startup-id $HOME/.config/compton/launch.sh
@@ -306,7 +310,7 @@ workspace $ws9 gaps horizontal 400
 workspace $ws9 gaps vertical 140
 workspace $ws9 gaps inner 100
 
-set $mode_gaps  Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft 
+set $mode_gaps  Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_horiz Horizontal Gaps: +|-|0 (local), Shift + +|-|0 (global)
@@ -499,20 +503,20 @@ bindsym Ctrl+$mod+Return exec gnome-terminal --class=floating-terminal
 
 ## Notion
 # always start in scratchpad
-for_window [class="^notion$"] floating enable, move scratchpad, scratchpad hide
+for_window [class="^notion$"] mark --add sp1, mark --add notion, floating enable, move scratchpad, scratchpad hide
 # keybind to show or hide it
-bindsym $mod+n [class="^notion$"] scratchpad show
+bindsym $mod+n [con_mark="notion"] scratchpad show
 # keybind to launch it the way i like it
 bindsym $mod+Shift+n exec $HOME/.config/i3/launch_notion.sh
 # launch it on first run? Should un-fullscreen it maybe; --no-startup-id ?
 #exec $HOME/.config/i3/launch_notion.sh
 
-## Ora (similar to Notion)
+## Ora
 # always start in scratchpad
-for_window [class="^Ora$"] floating enable, move scratchpad, scratchpad hide
+for_window [class="^Ora$"] mark --add sp2, mark --add ora, floating enable, move scratchpad, scratchpad hide
 # keybind to show or hind it
-bindsym $mod+m [class="^Ora$"] scratchpad show
-# keybind to launch it the way i like it
+bindsym $mod+m [con_mark="ora"] scratchpad show
+# keybind to launch it
 bindsym $mod+Shift+m exec /snap/bin/ora
 
 ## Discord
@@ -522,3 +526,8 @@ for_window [class="discord" title="^(?!.*Discord).*$"] floating enable, sticky e
 # got tired of focus wrapping, maybe i'll prefer if this is more deterministic
 focus_wrapping no
 
+# ignore clicking window titlebars (avoids accidental clicking when switching tabs); use mouse2 instead
+bindsym button1 nop
+
+## Android Studio
+for_window [class="Android Emulator"] floating enable

@@ -2,3 +2,7 @@
 #map <C-i> recolor
 
 # install Zathura-Pywal
+
+# arrows to move between pages
+map <Left> navigate previous
+map <Right> navigate next

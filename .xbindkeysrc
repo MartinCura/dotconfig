@@ -81,6 +81,9 @@
 # Button 9 switches to next tab
 "/usr/bin/xte 'keydown Control_L' 'key Page_Down' 'keyup Control_L'"
   b:9
+# Button 9 closes tab under mouse on Firefox's overflow
+#"sleep 1 && xdotool click --clearmodifiers 3 &>> /home/martin/tmp.txt && sleep 1 && xdotool key Up Up Up Return"
+#  b:9
 
 
 ##################################

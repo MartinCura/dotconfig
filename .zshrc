@@ -22,7 +22,7 @@ ZSH_THEME="random"  # "robbyrussell" "cloud"
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Opposite to previous option (can't be used together)
-ZSH_THEME_RANDOM_BLACKLIST=( "adben" "amuse" "wuffers" )
+ZSH_THEME_RANDOM_BLACKLIST=( "adben" "amuse" "wuffers" "evan" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -243,3 +243,12 @@ export PATH="$PATH:/home/martin/.dat/releases/dat-14.0.2-linux-x64"
 
 ##set +x
 ##exec 2>&3 3>&-
+
+# Terraform
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/bin/terraform terraform
+
+alias nv='nvim'
+
+# Rust
+. "$HOME/.cargo/env"

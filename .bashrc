@@ -169,3 +169,6 @@ export NVM_DIR="$HOME/.nvm"
 
 # NOTE: i use ZSH most of the time, so this may be missing some useful lines; find them in .zshrc
 
+
+complete -C /usr/bin/terraform terraform
+. "$HOME/.cargo/env"
