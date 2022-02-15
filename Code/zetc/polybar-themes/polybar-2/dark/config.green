@@ -23,12 +23,14 @@ trans = #00000000
 white = #FFFFFF
 black = #000000
 nicegray = #b03f3f3f
+nicergray = #161A20
 transparent-black = #b2000000
 
+;bg = ${color.nicergray}
 bg = ${color.trans}
 ; bg = #1F1F1F
 fg = #FFFFFF
-fg-alt = #A9ABB0
+;fg-alt = #A9ABB0
 
 acolor = #FFFFFF
 curgent = #EF5350
@@ -148,6 +150,8 @@ modules-right = mpd pkg cpu memory volume xbacklight battery wireless-network ne
 
 [bar/minimalist]
 inherit = bar/main
+
+;monitor = DP-3
 
 modules-left = workspaces-mnm space-separation space-separation currently-playing
 ;calendar-line
@@ -670,7 +674,7 @@ format-background = #1bffffff
 [module/currently-playing]
 type = custom/script
 exec = scripts/song_line.sh
-click-left = playerctl --all-players play-pause
+click-left = playerctl --player=youtubemusic,spotify play-pause
 click-middle = playerctl --ignore-player=vlc previous
 click-right = playerctl --ignore-player=vlc next
 interval = 2

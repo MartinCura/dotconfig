@@ -1,7 +1,7 @@
 ##PS4='+ $(date "+%s.%N")\011 '
 ##exec 3>&2 2>/tmp/zshstart.$$.log
 ##set -x
-###zmodload zsh/zprof
+####zmodload zsh/zprof
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -77,7 +77,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #plugins=(git aws bundler docker docker-compose cp heroku rbenv rvm rake battery)
-plugins=(git docker docker-compose cp)
+plugins=(git docker docker-compose cp poetry)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -112,6 +112,9 @@ export LANG=en_US.UTF-8
 
 HISTSIZE=10000000
 SAVEHIST=$HISTSIZE
+
+# Enable bashcompinit for completions
+autoload -U +X bashcompinit && bashcompinit
 
 # Re-run last command but with sudo
 alias fuck='sudo $(history -p \!\!)'
@@ -190,25 +193,26 @@ transfer() {
 # CUDA bin
 export PATH="$PATH:/usr/local/cuda-10.2/bin"
 
+# pipenv ~ don't use it anymore and it takes too much time
 # pipenv completion
-eval "$(pipenv --completion)"
-
+#eval "$(pipenv --completion)"
+#
 # pipenv auto shell
-function auto_pipenv_shell {
-	if [ ! -n "${PIPENV_ACTIVE+1}" ]; then
-		if [ -f "Pipfile" ] ; then
-			pipenv shell
-		fi
-	fi
-}
-function cd {
-	builtin cd "$@"
-	auto_pipenv_shell
-}
-auto_pipenv_shell
-
+#function auto_pipenv_shell {
+#	if [ ! -n "${PIPENV_ACTIVE+1}" ]; then
+#		if [ -f "Pipfile" ] ; then
+#			pipenv shell
+#		fi
+#	fi
+#}
+#function cd {
+#	builtin cd "$@"
+#	auto_pipenv_shell
+#}
+#auto_pipenv_shell
+#
 # pipenv venv in project dir
-export PIPENV_VENV_IN_PROJECT=1
+#export PIPENV_VENV_IN_PROJECT=1
 
 # GPG key
 export GPG_TTY=$(tty)
@@ -232,23 +236,38 @@ export PATH=$PATH:$HOME"/Code/zetc/selenium_experiments/geckodriver-v0.27.0-linu
 # Go (lang)
 export PATH=$PATH:/usr/local/go/bin
 
-# nvm
+# nvm ~ takes too much time to load but some things need it
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+function enable_nvm_completion {
+	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+}
 
 # dat
 export PATH="$PATH:/home/martin/.dat/releases/dat-14.0.2-linux-x64"
 
-
-##set +x
-##exec 2>&3 3>&-
-
 # Terraform
-autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/bin/terraform terraform
 
 alias nv='nvim'
 
 # Rust
 . "$HOME/.cargo/env"
+
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+eval "$(pyenv init -)"
+
+# pipx
+eval "$(register-python-argcomplete pipx)"
+
+
+## set +x
+##exec 2>&3 3>&-
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+# kubectl autocompletion
+source <(kubectl completion zsh)

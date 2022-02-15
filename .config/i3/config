@@ -255,7 +255,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@ toggle  # mute sound
 
 # Media player controls
-bindsym XF86AudioPlay exec playerctl --all-players play-pause
+#bindsym XF86AudioPlay exec playerctl --all-players play-pause
+bindsym XF86AudioPlay exec playerctl --player=youtubemusic play-pause
 bindsym XF86AudioPrev exec playerctl --ignore-player=vlc previous
 bindsym XF86AudioNext exec playerctl --ignore-player=vlc next
 
@@ -278,7 +279,7 @@ bindsym $mod+Ctrl+grave         workspace back_and_forth
 #exec_always --no-startup-id $HOME/.screenlayout/vertical-two-monitor.sh -i3
 #exec_always --no-startup-id $HOME/.screenlayout/horizontal-two-monitor.sh -i3
 bindsym --release $mod+Ctrl+Shift+s exec --no-startup-id $HOME/.screenlayout/automonitors.sh
-exec --no-startup-id $HOME/.screenlayout/vertical-two-monitor.sh -i3
+#exec --no-startup-id $HOME/.screenlayout/vertical-two-monitor.sh -i3
 
 # start compton ~ not ran on reload (exec instead of exec_always)
 exec        --no-startup-id $HOME/.config/compton/launch.sh
@@ -515,9 +516,9 @@ bindsym $mod+Shift+n exec $HOME/.config/i3/launch_notion.sh
 # always start in scratchpad
 for_window [class="^Ora$"] mark --add sp2, mark --add ora, floating enable, move scratchpad, scratchpad hide
 # keybind to show or hind it
-bindsym $mod+m [con_mark="ora"] scratchpad show
+#bindsym $mod+m [con_mark="ora"] scratchpad show
 # keybind to launch it
-bindsym $mod+Shift+m exec /snap/bin/ora
+#bindsym $mod+Shift+m exec /snap/bin/ora
 
 ## Discord
 # make pop-up float and have my preferred size and position (i still have to fullscreen it locally to avoid toolbar)
@@ -531,3 +532,11 @@ bindsym button1 nop
 
 ## Android Studio
 for_window [class="Android Emulator"] floating enable
+
+## ClickUp
+# always start in scratchpad
+for_window [class="^ClickUp"] mark --add clickup, floating enable, move scratchpad, scratchpad hide
+# keybind to show or hind it
+bindsym $mod+m [con_mark="clickup"] scratchpad show
+# keybind to launch it
+bindsym $mod+Shift+m exec /usr/local/bin/ClickUp

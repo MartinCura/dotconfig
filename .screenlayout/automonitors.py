@@ -11,8 +11,8 @@ switch
     2 ext monitors -> off eDP-1
 '''
 LAPTOP = 'eDP-1'
-EXT_1 = 'DP-3'
-EXT_2 = 'DP-1-1'
+EXT_1 = 'DP-1-1'
+EXT_2 = 'DP-1-3'
 CONFIG_FILE = './mode.yml'
 
 
