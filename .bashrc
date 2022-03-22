@@ -172,3 +172,6 @@ export NVM_DIR="$HOME/.nvm"
 
 complete -C /usr/bin/terraform terraform
 . "$HOME/.cargo/env"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

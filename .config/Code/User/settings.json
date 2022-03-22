@@ -61,7 +61,6 @@
     "python.analysis.disabled": [
         "unresolved-import"
     ],
-    "diffEditor.ignoreTrimWhitespace": false,
     "swaggerViewer.previewInBrowser": true,
     "typescript.updateImportsOnFileMove.enabled": "always",
     "workbench.editorAssociations": {
@@ -135,4 +134,6 @@
     "python.languageServer": "Pylance",
     "explorer.confirmDelete": false,
     "files.trimTrailingWhitespace": true,
+    "workbench.sideBar.location": "right",
+    "diffEditor.ignoreTrimWhitespace": false,
 }

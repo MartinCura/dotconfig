@@ -365,7 +365,7 @@ format-prefix = "MEM "
 type = internal/alsa
 
 label-muted = "婢"
-label-muted-background = ${color.curgent}
+label-muted-background = ${color.cyan}
 label-muted-padding = 2
 
 format-volume = <ramp-volume>
