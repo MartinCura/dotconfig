@@ -136,4 +136,9 @@
     "files.trimTrailingWhitespace": true,
     "workbench.sideBar.location": "right",
     "diffEditor.ignoreTrimWhitespace": false,
+    "python.formatting.provider": "black",
+    "python.venvFolders": [
+        ".cache/pypoetry",
+        ".cache/pypoetry/virtualenvs"
+    ],
 }
