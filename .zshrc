@@ -7,13 +7,15 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/martin/.oh-my-zsh"
+#export ZSH="/home/martin/.oh-my-zsh"
+export ZSH="/usr/share/oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="random"  # "robbyrussell" "cloud"
+ZSH_THEME_RANDOM_QUIET=true
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -22,7 +24,7 @@ ZSH_THEME="random"  # "robbyrussell" "cloud"
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Opposite to previous option (can't be used together)
-ZSH_THEME_RANDOM_BLACKLIST=( "adben" "amuse" "wuffers" "evan" )
+ZSH_THEME_RANDOM_IGNORED=( "adben" "amuse" "wuffers" "evan" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -120,12 +122,12 @@ autoload -U +X bashcompinit && bashcompinit
 alias fuck='sudo $(history -p \!\!)'
 
 # virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-export PROJECT_HOME=$HOME/Code
-export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-export VIRTUALENVWRAPPER_VIRTUALENV=$HOME/.local/bin/virtualenv
-#source $HOME/.local/bin/virtualenvwrapper.sh
-source $HOME/.local/bin/virtualenvwrapper_lazy.sh
+#export WORKON_HOME=$HOME/.virtualenvs
+#export PROJECT_HOME=$HOME/Code
+#export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+#export VIRTUALENVWRAPPER_VIRTUALENV=$HOME/.local/bin/virtualenv
+##source $HOME/.local/bin/virtualenvwrapper.sh
+#source $HOME/.local/bin/virtualenvwrapper_lazy.sh
 
 # activate local venv assuming it's in .venv/
 #alias activ='if [ -n $(source .venv/bin/activate) ]; then source ../.venv/bin/activate; fi'
@@ -149,7 +151,7 @@ export PATH=$PATH:/opt/buck/bin
 export PATH=$PATH:/opt/flutter/bin
 
 # Vertical screen setup script
-alias vertmon='source /home/martin/.screenlayout/vertical-two-monitor.sh'
+#alias vertmon='source /home/martin/.screenlayout/vertical-two-monitor.sh'
 
 # Editor for React
 export REACT_EDITOR=atom
@@ -222,7 +224,7 @@ eval $(gpg-agent --daemon 2> >(grep -v "already running"))
 # scaled spotify
 alias spotify='spotify --force-device-scale-factor=1.5'
 # scaled zoom
-alias zoom='QT_SCALE_FACTOR=1.5 zoom'
+#alias zoom='QT_SCALE_FACTOR=1.5 zoom'
 
 alias dj='python manage.py'
 
@@ -259,8 +261,10 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
 
 # pipx
+export PATH="$PATH:/home/martin/.local/bin"
 eval "$(register-python-argcomplete pipx)"
 
 
@@ -269,8 +273,17 @@ eval "$(register-python-argcomplete pipx)"
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+# aws' instructions for kubectl made me do this
+export PATH="$HOME/bin:$PATH"
+
 # kubectl autocompletion
 source <(kubectl completion zsh)
 
+# rvm
+source ~/.rvm/scripts/rvm
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+#alias code='codium'
+
+alias ssh='kitty +kitten ssh'

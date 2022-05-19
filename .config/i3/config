@@ -9,11 +9,12 @@ set $mod Mod4
 # is used in the bar {} block below.
 font pango:monospace 8
 
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
+# DejaVu Sans Mono is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-font pango:DejaVu Sans Mono, Terminus Condensed 8
-#font pango:Terminus 8
+##font pango:DejaVu Sans Mono 8
+#font pango:DejaVu Sans Mono, Terminus Condensed 8
+##font pango:Terminus 8
+font pango:Fira Code, DejaVu Sans Mono, Terminus Condensed 9
 
 # Before i3 v4.8, we used to recommend this one as the default:
 # font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -38,9 +39,9 @@ bindsym $mod+Shift+q kill
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 # rofi application launcher
-bindsym $mod+d exec rofi -show run -lines 7 -font "Fantasque Sans Mono 27" -theme "slate"
+bindsym $mod+d exec rofi -show run -lines 7 -font "Fantasque Sans Mono 12" -theme "slate"
 # rofi window switcher
-bindsym $mod+x exec rofi -show window -lines 10 -font "Fantasque Sans Mono 27" -theme "slate"
+bindsym $mod+x exec rofi -show window -lines 10 -font "Fantasque Sans Mono 12" -theme "slate"
 #bindsym $mod+Shift+z exec nop
 #bindsym --release Tab exec --no-startup-id sleep 1 && setxkbmap -option grab:break_actions && xdotool key XF86Ungrab && xdotool click --clearmodifiers 3 && sleep 1 && xdotool key Up Up Up Return
 
@@ -160,7 +161,8 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 # keyboard-friendly confirm
-bindsym $mod+Shift+e exec sh -c '[ $(echo "NO\nYES" | dmenu -sb "#ff6600" -i -p "Really exit i3 X session?") = "YES" ] && i3-msg exit'
+#bindsym $mod+Shift+e exec sh -c '[ $(echo "NO\nYES" | dmenu -sb "#ff6600" -i -p "Really exit i3 X session?") = "YES" ] && i3-msg exit'
+bindsym $mod+Shift+e exec rofi -show power-menu -modi "power-menu:~/.config/rofi/rofi-power-menu --no-symbols" -theme slate -font "Fira Code 10" -lines 6
 
 # resize window
 set $re_size 5
@@ -230,11 +232,12 @@ exec xinput set-float-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Accel Spee
 exec xinput set-float-prop "MOSART Semi. 2.4G Wireless Mouse" "libinput Accel Speed" 1.0
 
 # Screenshot custom region and copy to clipboard
-#bindsym --release Print             exec             scrot -s -p -f --line 'style=dash' -e 'xclip -selection clipboard -target image/png -i $f && mkdir -p /tmp/Screenshots       && mv $f /tmp/Screenshots/'
-#bindsym --release Print             exec             scrot -s -e 'xclip -selection clipboard -target image/png -i $f && rm $f'
-bindsym --release Print             exec  mkdir -p /tmp/Screenshots/ && scrot -s -p -f --line 'style=dash' "/tmp/Screenshots/$(date +"%Y-%m-%dT_%H:%M:%SZ").png" && sleep 0.6 && xclip -selection clipboard -target image/png -i "$(ls -Art /tmp/Screenshots/* | tail -n 1)"
-bindsym --release Ctrl+Shift+Print  exec  sleep 3 && setxkbmap -option grab:break_actions && xdotool key XF86Ungrab && scrot -s -f --line 'style=dash' -e 'xclip -selection clipboard -target image/png -i $f && mkdir -p ~/Pictures/Screenshots && mv $f ~/Pictures/Screenshots/'
-#bindsym --release Ctrl+Shift+Print  exec  sleep 4 && scrot -s -e 'xclip -selection clipboard -target image/png -i $f && rm $f'
+##bindsym --release Print             exec             scrot -s -p -f --line 'style=dash' -e 'xclip -selection clipboard -target image/png -i $f && mkdir -p /tmp/Screenshots       && mv $f /tmp/Screenshots/'
+##bindsym --release Print             exec             scrot -s -e 'xclip -selection clipboard -target image/png -i $f && rm $f'
+#bindsym --release Print             exec  mkdir -p /tmp/Screenshots/ && scrot -s -p -f --line 'style=dash' "/tmp/Screenshots/$(date +"%Y-%m-%dT_%H:%M:%SZ").png" && sleep 0.6 && xclip -selection clipboard -target image/png -i "$(ls -Art /tmp/Screenshots/* | tail -n 1)"
+#bindsym --release Ctrl+Shift+Print  exec  sleep 3 && setxkbmap -option grab:break_actions && xdotool key XF86Ungrab && scrot -s -f --line 'style=dash' -e 'xclip -selection clipboard -target image/png -i $f && mkdir -p ~/Pictures/Screenshots && mv $f ~/Pictures/Screenshots/'
+##bindsym --release Ctrl+Shift+Print  exec  sleep 4 && scrot -s -e 'xclip -selection clipboard -target image/png -i $f && rm $f'
+bindsym Print   exec  mkdir -p /tmp/screenshots && escrotum -s -C '/tmp/screenshots/%Y-%m-%d-%H%M%S_$wx$h.png'
 
 # Sreen brightness controls
 #bindsym XF86MonBrightnessUp   exec CURR=`xbacklight` && xbacklight + `echo "$CURR / 240.0 + 1" | bc`
@@ -256,7 +259,8 @@ bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   @DEFAULT
 
 # Media player controls
 #bindsym XF86AudioPlay exec playerctl --all-players play-pause
-bindsym XF86AudioPlay exec playerctl --player=youtubemusic play-pause
+#bindsym XF86AudioPlay exec playerctl --player=youtubemusic play-pause
+bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPrev exec playerctl --ignore-player=vlc previous
 bindsym XF86AudioNext exec playerctl --ignore-player=vlc next
 
@@ -281,12 +285,12 @@ bindsym $mod+Ctrl+grave         workspace back_and_forth
 bindsym --release $mod+Ctrl+Shift+s exec --no-startup-id $HOME/.screenlayout/automonitors.sh
 #exec --no-startup-id $HOME/.screenlayout/vertical-two-monitor.sh -i3
 
-# start compton ~ not ran on reload (exec instead of exec_always)
-exec        --no-startup-id $HOME/.config/compton/launch.sh
-# kill compton to turn off transparency  # ToDo: toggle transparency of current window
-bindsym --release $mod+Shift+h exec --no-startup-id killall compton
-# (re)start compton
-bindsym --release $mod+Ctrl+Shift+h exec --no-startup-id $HOME/.config/compton/launch.sh
+# start picom ~ not ran on reload (exec instead of exec_always)
+exec        --no-startup-id $HOME/.config/picom/launch.sh
+# kill picom to turn off transparency  # ToDo: toggle transparency of current window
+bindsym --release $mod+Shift+h exec --no-startup-id killall picom
+# (re)start picom
+bindsym --release $mod+Ctrl+Shift+h exec --no-startup-id $HOME/.config/picom/launch.sh
 
 # start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
@@ -307,8 +311,8 @@ workspace $ws2 gaps vertical 0
 workspace $ws7 gaps horizontal 150
 workspace $ws7 gaps vertical 70
 workspace $ws7 gaps inner 100
-workspace $ws9 gaps horizontal 400
-workspace $ws9 gaps vertical 140
+workspace $ws9 gaps horizontal 300
+workspace $ws9 gaps vertical 100
 workspace $ws9 gaps inner 100
 
 set $mode_gaps  Gaps: (o)uter, (i)nner, (h)orizontal, (v)ertical, (t)op, (r)ight, (b)ottom, (l)eft
@@ -479,7 +483,7 @@ exec --no-startup-id $HOME/.config/i3/lid_close.sh &> $HOME/.config/i3/debug.log
 bindsym $mod+Shift+d exec gnome-calculator
 
 # script to reset wifi whenever device shows as "unavailable"
-exec --no-startup-id $HOME/.config/i3/wifi_resetter.sh &> $HOME/.config/i3/debug.log
+#exec --no-startup-id $HOME/.config/i3/wifi_resetter.sh &> $HOME/.config/i3/debug.log
 
 # jumps to Firefox in workspace 1, so that i can open new tabs (and search) from anywhere
 bindsym $mod+t [class="(?i)Firefox" workspace=1] focus; exec --no-startup-id "sleep 0.6 && xdotool getactivewindow key ctrl+t"
@@ -491,12 +495,12 @@ mode "empty" {
 
 ## open empty space (nowin)
 #bindsym $mod+Shift+Return open
-# open barely visible terminal (with special class name so that compton takes care of it)
-bindsym $mod+Shift+Return exec gnome-terminal --class=barely-visible-terminal
+# open barely visible terminal (with special class name so that picom takes care of it)
+bindsym $mod+Shift+Return exec i3-sensible-terminal --class=barely-visible-terminal
 
 # Floating terminal
-for_window [class="^floating-terminal$"] floating enable, resize set 1200 650, move position 2550 px 1400 px
-bindsym Ctrl+$mod+Return exec gnome-terminal --class=floating-terminal
+for_window [class="^floating-terminal$"] floating enable, resize set 800 325, move position 1050 px 700 px
+bindsym Ctrl+$mod+Return exec i3-sensible-terminal --class=floating-terminal -o background=#0b2f21
 
 # Something i copied from airblader and i'm not sure what it should do
 ##for_window [instance="__nmtui"] floating enable
@@ -535,8 +539,9 @@ for_window [class="Android Emulator"] floating enable
 
 ## ClickUp
 # always start in scratchpad
-for_window [class="^ClickUp"] mark --add clickup, floating enable, move scratchpad, scratchpad hide
+for_window [class="^ClickUp"] mark --add clickup, floating enable, move scratchpad, scratchpad hide, scratchpad show
 # keybind to show or hind it
 bindsym $mod+m [con_mark="clickup"] scratchpad show
 # keybind to launch it
-bindsym $mod+Shift+m exec /usr/local/bin/ClickUp
+#bindsym $mod+Shift+m exec /usr/local/bin/ClickUp
+bindsym $mod+Shift+m exec /usr/bin/clickup

@@ -29,7 +29,7 @@
         "**/dist": true
     },
     "editor.minimap.enabled": false,
-    "workbench.colorTheme": "One Dark Pro",
+    "workbench.colorTheme": "Kimbie Dark",
     "editor.fontFamily": "Fira Code",
 
     "[makefile]": {
@@ -100,7 +100,7 @@
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "window.menuBarVisibility": "compact",
+    "window.menuBarVisibility": "toggle",
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -108,7 +108,6 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "redhat.telemetry.enabled": false,
-    "files.insertFinalNewline": true,
     "[typescriptreact]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -126,9 +125,9 @@
     "editor.inlineSuggest.enabled": true,
     "github.copilot.enable": {
         "*": true,
-        "yaml": false,
-        "plaintext": false,
-        "markdown": false,
+        "yaml": true,
+        "plaintext": true,
+        "markdown": true,
         "python": true
     },
     "python.languageServer": "Pylance",
@@ -137,8 +136,19 @@
     "workbench.sideBar.location": "right",
     "diffEditor.ignoreTrimWhitespace": false,
     "python.formatting.provider": "black",
-    "python.venvFolders": [
-        ".cache/pypoetry",
-        ".cache/pypoetry/virtualenvs"
+    "files.insertFinalNewline": true,
+    "vs-kubernetes": {
+        "disable-linters": ["resource-limits"],
+    },
+    "[sql]": {
+        "editor.defaultFormatter": "bradymholt.pgformatter"
+    },
+    "editor.selectionClipboard": false,
+    "markdown.extension.toc.updateOnSave": false,
+    "gitlens.codeLens.scopes": [
+        "document"
     ],
+    "gitlens.currentLine.enabled": false,
+    "gitlens.hovers.currentLine.over": "line",
+    "gitlens.hovers.enabled": false,
 }

@@ -1,0 +1,11 @@
+[user]
+	email = martincura@gmail.com
+	name = Martín Cura
+	signingkey = CFC167E9E578468C
+[commit]
+	gpgsign = true
+[core]
+	editor = nano
+
+[includeIf "gitdir:~/Code/Mutt/"]
+	path = ~/Code/Mutt/.gitconfig

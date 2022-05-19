@@ -1,9 +1,10 @@
 * {
-  background-color: #282C33;
+  background-color: #282c33;
   border-color: #2e343f;
   text-color: #8ca0aa;
   spacing: 0;
-  width: 512px;
+  // width: 512px;
+  width: 420px;
 }
 
 inputbar {
@@ -17,14 +18,15 @@ prompt {
 }
 
 textbox {
-  background-color: #2e343f;
+  //background-color: #2e343f;
   border: 0 0 1px 0;
   border-color: #282C33;
   padding: 8px 16px;
 }
 
 entry {
-  padding: 16px;
+  //padding: 16px;
+  padding: 10px;
 }
 
 listview {
@@ -36,8 +38,12 @@ listview {
 element {
   border: 0 0 1px 0;
   padding: 16px;
+  //padding: 10px;
 }
 
+selected {
+  background-color: #2e343f;
+}
 element selected {
   background-color: #2e343f;
 }

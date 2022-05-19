@@ -15,3 +15,8 @@ dotconfig checkout
 Of course this last step will fail if it may overwrite something (such as an existing `.bashrc`).
 
 Uses ["bare repo and alias" method](https://news.ycombinator.com/item?id=11070797).
+
+
+## Not here
+
+* Firefox profiles
