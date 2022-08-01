@@ -221,7 +221,8 @@ mouse_warping none
 #   switch to Latin American only while pressing Right Alt
 #   Right Ctrl as Compose key
 exec_always setxkbmap -layout us,latam -option "grp:switch,compose:rctrl"
-bindsym $mod+Alt+space exec setxkbmap -layout us,latam -option "grp:switch,compose:rctrl"
+#bindsym $mod+Shift+comma exec setxkbmap -layout 'us,latam' -option "grp:switch,compose:rctrl"
+bindsym $mod+bracketleft exec --no-startup-id ~/.config/i3/kb_layout.sh
 
 # In case synaptics config (/etc/X11/xorg...) doesn't work
 #exec --no-startup-id synclient HorizTwoFingerScroll=1
@@ -232,12 +233,8 @@ exec xinput set-float-prop "SYNA2393:00 06CB:7A13 Touchpad" "libinput Accel Spee
 exec xinput set-float-prop "MOSART Semi. 2.4G Wireless Mouse" "libinput Accel Speed" 1.0
 
 # Screenshot custom region and copy to clipboard
-##bindsym --release Print             exec             scrot -s -p -f --line 'style=dash' -e 'xclip -selection clipboard -target image/png -i $f && mkdir -p /tmp/Screenshots       && mv $f /tmp/Screenshots/'
-##bindsym --release Print             exec             scrot -s -e 'xclip -selection clipboard -target image/png -i $f && rm $f'
-#bindsym --release Print             exec  mkdir -p /tmp/Screenshots/ && scrot -s -p -f --line 'style=dash' "/tmp/Screenshots/$(date +"%Y-%m-%dT_%H:%M:%SZ").png" && sleep 0.6 && xclip -selection clipboard -target image/png -i "$(ls -Art /tmp/Screenshots/* | tail -n 1)"
-#bindsym --release Ctrl+Shift+Print  exec  sleep 3 && setxkbmap -option grab:break_actions && xdotool key XF86Ungrab && scrot -s -f --line 'style=dash' -e 'xclip -selection clipboard -target image/png -i $f && mkdir -p ~/Pictures/Screenshots && mv $f ~/Pictures/Screenshots/'
-##bindsym --release Ctrl+Shift+Print  exec  sleep 4 && scrot -s -e 'xclip -selection clipboard -target image/png -i $f && rm $f'
-bindsym Print   exec  mkdir -p /tmp/screenshots && escrotum -s -C '/tmp/screenshots/%Y-%m-%d-%H%M%S_$wx$h.png'
+bindsym Print      exec  mkdir -p /tmp/screenshots && flameshot gui --clipboard --path /tmp/screenshots/
+bindsym Ctrl+Print exec  mkdir -p /tmp/screenshots && flameshot gui --clipboard --path /tmp/screenshots/ --delay 3000
 
 # Sreen brightness controls
 #bindsym XF86MonBrightnessUp   exec CURR=`xbacklight` && xbacklight + `echo "$CURR / 240.0 + 1" | bc`
@@ -306,7 +303,7 @@ gaps inner 9
 smart_gaps inverse_outer
 
 workspace $ws2 gaps inner 0
-workspace $ws2 gaps horizontal 310
+workspace $ws2 gaps horizontal 260
 workspace $ws2 gaps vertical 0
 workspace $ws7 gaps horizontal 150
 workspace $ws7 gaps vertical 70
@@ -539,7 +536,7 @@ for_window [class="Android Emulator"] floating enable
 
 ## ClickUp
 # always start in scratchpad
-for_window [class="^ClickUp"] mark --add clickup, floating enable, move scratchpad, scratchpad hide, scratchpad show
+for_window [class="^ClickUp"] mark --add clickup, floating enable, move scratchpad, scratchpad show #hide, scratchpad show
 # keybind to show or hind it
 bindsym $mod+m [con_mark="clickup"] scratchpad show
 # keybind to launch it

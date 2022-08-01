@@ -159,7 +159,7 @@ modules-left = workspaces-mnm currently-playing
 ;calendar-line
 modules-center = date-mnm
 ;mpd light volume-pulse
-modules-right = cpu-mnm memory-mnm volume-mnm backlight battery-mnm
+modules-right = toggl cpu-mnm memory-mnm volume-mnm backlight battery-mnm
 ;network-mnm
 
 tray-position = right
@@ -686,6 +686,13 @@ click-left = playerctl --player=chromium play-pause
 click-middle = playerctl --ignore-player=vlc previous
 click-right = playerctl --ignore-player=vlc next
 interval = 2
+format-padding = 2
+
+
+[module/toggl]
+type = custom/script
+exec = scripts/toggl.sh
+interval = 30
 format-padding = 2
 
 

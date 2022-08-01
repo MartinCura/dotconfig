@@ -9,3 +9,5 @@
 
 [includeIf "gitdir:~/Code/Mutt/"]
 	path = ~/Code/Mutt/.gitconfig
+[init]
+	defaultBranch = main

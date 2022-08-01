@@ -31,7 +31,7 @@ ZSH_THEME_RANDOM_IGNORED=( "adben" "amuse" "wuffers" "evan" )
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
+HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
@@ -169,8 +169,8 @@ alias dotconfig='/usr/bin/git --git-dir=$HOME/.home/ --work-tree=$HOME'
 #(cat ~/.cache/wal/sequences &)
 
 # ssh-agent with gnome-keyring
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh --daemonize)
-export SSH_AUTH_SOCK
+#eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh --daemonize)
+#export SSH_AUTH_SOCK
 
 # Disable ^S as SIGSTOP because i like it as a quicksave (such as in Vim)
 stty -ixon
@@ -286,4 +286,4 @@ export PATH="$PATH:$HOME/.rvm/bin"
 
 #alias code='codium'
 
-alias ssh='kitty +kitten ssh'
+alias sshk='kitty +kitten ssh'

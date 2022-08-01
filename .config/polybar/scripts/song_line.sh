@@ -6,7 +6,8 @@ emoji="\U1f300-\U1f5ff\U1f900-\U1f9ff\U1f600-\U1f64f\U1f680-\U1f6ff\U2600-\U26ff
 STATUS=$(playerctl -p $PLAYER status 2> /dev/null)
 #STATUS=$(playerctl status 2> /dev/null)
 [[ $STATUS != 'Playing' ]] && [[ $STATUS != 'Paused' ]] && echo " " && exit 0
-SONG_LINE=`echo "$(playerctl -p $PLAYER metadata artist)  /  $(playerctl -p $PLAYER metadata title)" | LC_ALL=UTF-8 sed -e "s/[$(printf $emoji)]//g"`
+SONG_LINE="$(playerctl -p $PLAYER metadata artist)  /  $(playerctl -p $PLAYER metadata title)"
+# SONG_LINE=`echo "${SONG_LINE}" | LC_ALL=UTF-8 sed -e "s/[$(printf $emoji)]//g"`
 #echo "$(playerctl metadata artist)  /  $(playerctl metadata title)"
 #♪
 [[ $STATUS == 'Playing' ]] && SONG_LINE="${SONG_LINE} ♪"

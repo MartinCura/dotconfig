@@ -133,7 +133,6 @@
     "python.languageServer": "Pylance",
     "explorer.confirmDelete": false,
     "files.trimTrailingWhitespace": true,
-    "workbench.sideBar.location": "right",
     "diffEditor.ignoreTrimWhitespace": false,
     "python.formatting.provider": "black",
     "files.insertFinalNewline": true,
@@ -151,4 +150,14 @@
     "gitlens.currentLine.enabled": false,
     "gitlens.hovers.currentLine.over": "line",
     "gitlens.hovers.enabled": false,
+    "files.participants.timeout": 10000,
+    "files.maxMemoryForLargeFilesMB": 8192,
+    "[scss]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[dockerfile]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    },
+    "window.zoomLevel": -1,
+    "workbench.sideBar.location": "right",
 }
