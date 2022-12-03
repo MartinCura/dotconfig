@@ -287,3 +287,6 @@ export PATH="$PATH:$HOME/.rvm/bin"
 #alias code='codium'
 
 alias sshk='kitty +kitten ssh'
+
+## docker rootless
+#export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock

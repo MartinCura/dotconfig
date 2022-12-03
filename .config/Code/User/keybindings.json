@@ -50,5 +50,10 @@
   {
     "key": "ctrl+shift+-",
     "command": "-workbench.action.navigateForward"
+  },
+  {
+    "key": "ctrl+up",
+    "command": "git.stage",
+    "when": "workbench.scm.active"
   }
 ]

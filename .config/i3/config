@@ -123,6 +123,9 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+# Layout mode for new containers
+workspace_layout tabbed
+
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -250,8 +253,10 @@ bindsym XF86MonBrightnessDown       exec light -U 3
 bindsym Ctrl+XF86MonBrightnessDown  exec light -U 20
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%     # increase sound volume
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%     # decrease sound volume
+#bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%     # increase sound volume
+#bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%     # decrease sound volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id $HOME/.config/i3/change_volume.sh +          # increase sound volume (with max)
+bindsym XF86AudioLowerVolume exec --no-startup-id $HOME/.config/i3/change_volume.sh -          # decrease sound volume (with max)
 bindsym XF86AudioMute        exec --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@ toggle  # mute sound
 
 # Media player controls
@@ -265,12 +270,13 @@ bindsym XF86AudioNext exec playerctl --ignore-player=vlc next
 exec redshift
 
 # Switch to next workspace
-bindsym $mod+grave              workspace next
-bindsym $mod+Shift+grave        workspace prev
+bindsym $mod+Ctrl+grave        workspace next
+bindsym $mod+Ctrl+Shift+grave  workspace prev
+bindsym $mod+Shift+grave       workspace prev
 # Switch to previously focused workspace
-bindsym $mod+Ctrl+grave         workspace back_and_forth
+bindsym $mod+grave             workspace back_and_forth
 
-## background
+## Wallpaper
 ##exec --no-startup-id xsetroot -solid "#121212"
 #set $BACKGROUND_IMG $HOME/.config/i3/background.png
 #set $BACKGROUND_IMG $HOME/Pictures/Wallpapers/birch_trees_forest_lake_reflection-wallpaper-3840x2160.jpg
@@ -443,8 +449,9 @@ bindsym $mod+z exec nautilus
 # enter fullscreen mode in all monitors
 bindsym $mod+Shift+f fullscreen toggle global
 
-# start gnome calculator windows as floating
+# start calculator windows as floating
 for_window [class="Gnome-calculator"] floating enable
+for_window [class="(?i)SpeedCrunch"] floating enable
 
 ## scratchpad
 # move currently focused window to scratchpad
@@ -477,7 +484,8 @@ exec --no-startup-id nm-applet
 exec --no-startup-id $HOME/.config/i3/lid_close.sh &> $HOME/.config/i3/debug.log
 
 # calculator shortcut
-bindsym $mod+Shift+d exec gnome-calculator
+#bindsym $mod+Shift+d exec gnome-calculator
+bindsym $mod+Shift+d exec speedcrunch
 
 # script to reset wifi whenever device shows as "unavailable"
 #exec --no-startup-id $HOME/.config/i3/wifi_resetter.sh &> $HOME/.config/i3/debug.log
@@ -496,7 +504,7 @@ mode "empty" {
 bindsym $mod+Shift+Return exec i3-sensible-terminal --class=barely-visible-terminal
 
 # Floating terminal
-for_window [class="^floating-terminal$"] floating enable, resize set 800 325, move position 1050 px 700 px
+for_window [class="^floating-terminal$"] floating enable, resize set 800 325, move position 2970 px 700 px
 bindsym Ctrl+$mod+Return exec i3-sensible-terminal --class=floating-terminal -o background=#0b2f21
 
 # Something i copied from airblader and i'm not sure what it should do
@@ -540,5 +548,5 @@ for_window [class="^ClickUp"] mark --add clickup, floating enable, move scratchp
 # keybind to show or hind it
 bindsym $mod+m [con_mark="clickup"] scratchpad show
 # keybind to launch it
-#bindsym $mod+Shift+m exec /usr/local/bin/ClickUp
-bindsym $mod+Shift+m exec /usr/bin/clickup
+bindsym $mod+Shift+m exec /usr/local/bin/clickup
+#bindsym $mod+Shift+m exec /usr/bin/clickup
