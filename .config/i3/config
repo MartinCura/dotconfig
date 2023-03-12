@@ -308,9 +308,9 @@ gaps inner 9
 
 smart_gaps inverse_outer
 
-workspace $ws2 gaps inner 0
-workspace $ws2 gaps horizontal 260
-workspace $ws2 gaps vertical 0
+#workspace $ws2 gaps inner 0
+#workspace $ws2 gaps horizontal 260
+#workspace $ws2 gaps vertical 0
 workspace $ws7 gaps horizontal 150
 workspace $ws7 gaps vertical 70
 workspace $ws7 gaps inner 100
@@ -451,7 +451,7 @@ bindsym $mod+Shift+f fullscreen toggle global
 
 # start calculator windows as floating
 for_window [class="Gnome-calculator"] floating enable
-for_window [class="(?i)SpeedCrunch"] floating enable
+for_window [class="(?i)SpeedCrunch"] floating enable, fullscreen toggle
 
 ## scratchpad
 # move currently focused window to scratchpad
@@ -524,7 +524,7 @@ bindsym $mod+Shift+n exec $HOME/.config/i3/launch_notion.sh
 ## Ora
 # always start in scratchpad
 for_window [class="^Ora$"] mark --add sp2, mark --add ora, floating enable, move scratchpad, scratchpad hide
-# keybind to show or hind it
+# keybind to show or hide it
 #bindsym $mod+m [con_mark="ora"] scratchpad show
 # keybind to launch it
 #bindsym $mod+Shift+m exec /snap/bin/ora
@@ -542,11 +542,16 @@ bindsym button1 nop
 ## Android Studio
 for_window [class="Android Emulator"] floating enable
 
-## ClickUp
-# always start in scratchpad
-for_window [class="^ClickUp"] mark --add clickup, floating enable, move scratchpad, scratchpad show #hide, scratchpad show
-# keybind to show or hind it
-bindsym $mod+m [con_mark="clickup"] scratchpad show
-# keybind to launch it
-bindsym $mod+Shift+m exec /usr/local/bin/clickup
-#bindsym $mod+Shift+m exec /usr/bin/clickup
+### ClickUp
+## always start in scratchpad
+#for_window [class="^ClickUp"] mark --add clickup, floating enable, move scratchpad, scratchpad show #hide, scratchpad show
+## keybind to show or hide it
+#bindsym $mod+m [con_mark="clickup"] scratchpad show
+## keybind to launch it
+#bindsym $mod+Shift+m exec /usr/local/bin/clickup
+##bindsym $mod+Shift+m exec /usr/bin/clickup
+
+## Linear.app
+for_window [instance="crx_bgdbmehlmdmddlgneophbcddadgknlpm"] mark --add linear, floating enable, move scratchpad, scratchpad show
+bindsym $mod+m [con_mark="linear"] scratchpad show
+bindsym $mod+Shift+m exec /usr/bin/chromium --profile-directory=Default --app-id=bgdbmehlmdmddlgneophbcddadgknlpm

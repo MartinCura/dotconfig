@@ -1,7 +1,8 @@
 [user]
 	email = martincura@gmail.com
 	name = Martín Cura
-	signingkey = CFC167E9E578468C
+	# signingkey = CFC167E9E578468C  # GitLab
+	signingkey = 3699119A2BF431D5  # GitHub
 [commit]
 	gpgsign = true
 [core]

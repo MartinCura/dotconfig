@@ -30,7 +30,7 @@
         "**/dist": true
     },
     "editor.minimap.enabled": false,
-    "workbench.colorTheme": "GitHub Light Default",
+    "workbench.colorTheme": "Kimbie Dark",
     "editor.fontFamily": "Fira Code",
 
     "[makefile]": {
@@ -57,7 +57,8 @@
     },
     "[python]": {
         "editor.insertSpaces": true,
-        "editor.tabSize": 4
+        "editor.tabSize": 4,
+        "editor.formatOnType": true
     },
     "python.analysis.disabled": [
         "unresolved-import"
@@ -89,10 +90,13 @@
     "latex-workshop.view.pdf.viewer": "tab",
     "search.exclude": {
         "**/.eslintcache": true,
+        "**/.mypy_cache": true,
         "**/*.lock": true,
+        "**/*.log": true,
         "**/*.tsbuildinfo": true,
         "**/build": true,
         "**/dist": true,
+        "**/manifest.json": true,
         "**/yarn-error.log": true
     },
     "[typescript]": {
@@ -158,8 +162,15 @@
     "[dockerfile]": {
         "editor.defaultFormatter": "ms-azuretools.vscode-docker"
     },
-    "diffEditor.ignoreTrimWhitespace": false,
-    "window.zoomLevel": -1,
     "workbench.tree.indent": 15,
     "workbench.tree.renderIndentGuides": "always",
+    "[dockercompose]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    },
+    "python.linting.mypyEnabled": true,
+    "mypy.runUsingActiveInterpreter": true,
+    "git.enableCommitSigning": true,
+    "python.analysis.typeCheckingMode": "basic",
+    "git.suggestSmartCommit": false,
+    "window.zoomLevel": -1,
 }

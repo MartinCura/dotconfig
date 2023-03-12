@@ -115,6 +115,8 @@ export LANG=en_US.UTF-8
 HISTSIZE=10000000
 SAVEHIST=$HISTSIZE
 
+export EDITOR=nano
+
 # Enable bashcompinit for completions
 autoload -U +X bashcompinit && bashcompinit
 
@@ -132,10 +134,6 @@ alias fuck='sudo $(history -p \!\!)'
 # activate local venv assuming it's in .venv/
 #alias activ='if [ -n $(source .venv/bin/activate) ]; then source ../.venv/bin/activate; fi'
 alias activ='source .venv/bin/activate'
-
-# rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
 
 # Android variables for React Native tools
 export ANDROID_HOME=$HOME/Android/Sdk
@@ -279,14 +277,18 @@ export PATH="$HOME/bin:$PATH"
 # kubectl autocompletion
 source <(kubectl completion zsh)
 
-# rvm
-source ~/.rvm/scripts/rvm
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
 #alias code='codium'
 
 alias sshk='kitty +kitten ssh'
 
 ## docker rootless
 #export DOCKER_HOST=unix://$XDG_RUNTIME_DIR/docker.sock
+
+# rbenv
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
+# rvm
+source ~/.rvm/scripts/rvm
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

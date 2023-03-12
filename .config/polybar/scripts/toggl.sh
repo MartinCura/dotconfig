@@ -11,6 +11,6 @@ if [[ $(echo $CURRENT_ENTRY | jq -r ".data") == "null" ]]; then
 else
     NAME=$(echo $CURRENT_ENTRY | jq -r ".data.description")
     TIME_START=$(echo $CURRENT_ENTRY | jq -r ".data.start")
-    TIME_DURATION=$(datediff $TIME_START $(date +"%Y-%m-%dT%H:%M:%S%Z") -f "%Hh %Mm %Ss")
-    echo "[⏰ $NAME $TIME_DURATION ]"
+    TIME_DURATION=$(datediff $TIME_START $(date +"%Y-%m-%dT%H:%M:%S%Z") -f "%Hh %Mm")
+    echo "[ $NAME $TIME_DURATION ]"
 fi

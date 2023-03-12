@@ -159,7 +159,7 @@ modules-left = workspaces-mnm currently-playing
 ;calendar-line
 modules-center = date-mnm
 ;mpd light volume-pulse
-modules-right = toggl cpu-mnm memory-mnm volume-mnm backlight battery-mnm
+modules-right = linear toggl cpu-mnm memory-mnm volume-mnm backlight battery-mnm
 ;network-mnm
 
 tray-position = right
@@ -694,6 +694,13 @@ type = custom/script
 exec = scripts/toggl.sh
 interval = 30
 format-padding = 2
+
+
+[module/linear]
+type = custom/script
+exec = scripts/linear_line.sh
+interval = 300
+format-padding = 5
 
 
 ;== EOF ========================================================
