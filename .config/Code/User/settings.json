@@ -1,176 +1,208 @@
 {
-    "files.trimFinalNewlines": true,
-    "editor.lineNumbers": "interval",
-    "editor.folding": false,
-    "editor.suggestSelection": "first",
-    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-    "files.exclude": {
-        "**/.~lock*": true,
-        "**/.classpath": true,
-        "**/.factorypath": true,
-        "**/.next": true,
-        "**/.nyc_output": true,
-        "**/.project": true,
-        "**/.tags": true,
-        "**/.tags1": true,
-        "**/.yarn": true,
-        "**/*.map": true,
-        "**/swagger-ui-*.js": true,
-        "**/swagger-ui.css": true,
-        "**/swagger-ui.js": true
-    },
-    "editor.autoClosingQuotes": "never",
-    "editor.tabSize": 2,
-    "python.jediEnabled": false,
-    "java.errors.incompleteClasspath.severity": "ignore",
-    "files.watcherExclude": {
-        "**/.ammonite": true,
-        "**/.bloop": true,
-        "**/.metals": true,
-        "**/dist": true
-    },
-    "editor.minimap.enabled": false,
-    "workbench.colorTheme": "Kimbie Dark",
-    "editor.fontFamily": "Fira Code",
+  "files.trimFinalNewlines": true,
+  "editor.lineNumbers": "interval",
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "files.exclude": {
+    "**/__pycache__": true,
+    "**/.~lock*": true,
+    "**/.classpath": true,
+    "**/.coverage.*": true,
+    "**/.factorypath": true,
+    "**/.mypy_cache": true,
+    "**/.next-COMMENTED": true,
+    "**/.nox": true,
+    "**/.nyc_output": true,
+    "**/.project": true,
+    "**/.pytest_cache": true,
+    "**/.ruff_cache": true,
+    "**/.tags": true,
+    "**/.tags1": true,
+    "**/.yarn": true,
+    "**/*.map": true,
+    "**/swagger-ui-*.js": true,
+    "**/swagger-ui.css": true,
+    "**/swagger-ui.js": true
+  },
+  "editor.autoClosingQuotes": "never",
+  "editor.tabSize": 2,
+  // "python.jediEnabled": false,
+  "java.errors.incompleteClasspath.severity": "ignore",
+  "files.watcherExclude": {
+    "**/.ammonite": true,
+    "**/.bloop": true,
+    "**/.metals": true,
+    "**/dist": true,
+    "**/target": true
+  },
+  "editor.minimap.enabled": false,
+  "workbench.colorTheme": "One Dark Pro",
+  "editor.fontFamily": "Fira Code",
 
-    "[makefile]": {
-        "editor.tabSize": 4,
-        "editor.insertSpaces": false
-    },
-    "editor.fontLigatures": true,
-    "editor.fontSize": 15,
-    "editor.smoothScrolling": true,
-    "workbench.list.smoothScrolling": true,
-    "files.associations": {
-        ".prettierrc.json": "json",
-        "*.json": "jsonc"
-    },
+  "[makefile]": {
+    "editor.tabSize": 4,
+    "editor.insertSpaces": false
+  },
+  "editor.fontLigatures": true,
+  "editor.fontSize": 15,
+  "workbench.list.smoothScrolling": true,
+  "files.associations": {
+    ".prettierrc.json": "json",
+    "*.json": "jsonc"
+  },
 
-    "[json]": {
-        "editor.quickSuggestions": {
-            "strings": true
-        },
-        "editor.suggest.insertMode": "replace",
-        "editor.insertSpaces": true,
-        "editor.tabSize": 4,
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "[json]": {
+    "editor.quickSuggestions": {
+      "strings": true
     },
-    "[python]": {
-        "editor.insertSpaces": true,
-        "editor.tabSize": 4,
-        "editor.formatOnType": true
-    },
-    "python.analysis.disabled": [
-        "unresolved-import"
-    ],
-    "swaggerViewer.previewInBrowser": true,
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb"
-    },
-    "editor.gotoLocation.multipleDeclarations": "goto",
-    "editor.gotoLocation.multipleTypeDefinitions": "goto",
-    "editor.gotoLocation.multipleReferences": "goto",
-    "editor.gotoLocation.multipleImplementations": "goto",
-    "editor.gotoLocation.multipleDefinitions": "goto",
-    "references.preferredLocation": "view",
-    // "latex-workshop.view.pdf.viewer": "external",
-    // "latex-workshop.view.pdf.external.viewer.command": "zathura",
-    // "latex-workshop.view.pdf.external.viewer.args": [
-    //     "--synctex-editor-command",
-    //     "code --reuse-window -g \"%{input}:%{line}\"",
-    //     "%PDF%"
-    // ],
-    // "latex-workshop.view.pdf.external.synctex.command": "zathura",
-    // "latex-workshop.view.pdf.external.synctex.args": [
-    //     "--synctex-forward=%LINE%:0:%TEX%",
-    //     "%PDF%"
-    // ],
-    "editor.acceptSuggestionOnEnter": "off",
-    "latex-workshop.view.pdf.viewer": "tab",
-    "search.exclude": {
-        "**/.eslintcache": true,
-        "**/.mypy_cache": true,
-        "**/*.lock": true,
-        "**/*.log": true,
-        "**/*.tsbuildinfo": true,
-        "**/build": true,
-        "**/dist": true,
-        "**/manifest.json": true,
-        "**/yarn-error.log": true
-    },
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "window.menuBarVisibility": "toggle",
-    "[html]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[javascriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "redhat.telemetry.enabled": false,
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[markdown]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[jsonc]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "git.inputValidationSubjectLength": null,
-    "[yaml]": {
-        "editor.defaultFormatter": "redhat.vscode-yaml"
-    },
-    "files.eol": "\n",
-    "editor.inlineSuggest.enabled": true,
-    "github.copilot.enable": {
-        "*": true,
-        "yaml": true,
-        "plaintext": true,
-        "markdown": true,
-        "python": true
-    },
-    "python.languageServer": "Pylance",
-    "explorer.confirmDelete": false,
-    "files.trimTrailingWhitespace": true,
-    "python.formatting.provider": "black",
-    "files.insertFinalNewline": true,
-    "vs-kubernetes": {
-        "disable-linters": ["resource-limits"],
-    },
-    "[sql]": {
-        "editor.defaultFormatter": "bradymholt.pgformatter"
-    },
-    "editor.selectionClipboard": false,
-    "markdown.extension.toc.updateOnSave": false,
-    "gitlens.codeLens.scopes": [
-        "document"
-    ],
-    "gitlens.currentLine.enabled": false,
-    "gitlens.hovers.currentLine.over": "line",
-    "gitlens.hovers.enabled": false,
-    "files.participants.timeout": 10000,
-    "files.maxMemoryForLargeFilesMB": 8192,
-    "[scss]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[dockerfile]": {
-        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-    },
-    "workbench.tree.indent": 15,
-    "workbench.tree.renderIndentGuides": "always",
-    "[dockercompose]": {
-        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
-    },
-    "python.linting.mypyEnabled": true,
-    "mypy.runUsingActiveInterpreter": true,
-    "git.enableCommitSigning": true,
-    "python.analysis.typeCheckingMode": "basic",
-    "git.suggestSmartCommit": false,
-    "window.zoomLevel": -1,
+    "editor.suggest.insertMode": "replace",
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[python]": {
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "editor.formatOnType": true,
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.codeActionsOnSave": {
+      "source.fixAll": true,
+      "source.organizeImports": true
+    }
+  },
+  "swaggerViewer.previewInBrowser": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "editor.gotoLocation.multipleDeclarations": "goto",
+  "editor.gotoLocation.multipleTypeDefinitions": "goto",
+  "editor.gotoLocation.multipleReferences": "goto",
+  "editor.gotoLocation.multipleImplementations": "goto",
+  "editor.gotoLocation.multipleDefinitions": "goto",
+  "references.preferredLocation": "view",
+  // "latex-workshop.view.pdf.viewer": "external",
+  // "latex-workshop.view.pdf.external.viewer.command": "zathura",
+  // "latex-workshop.view.pdf.external.viewer.args": [
+  //     "--synctex-editor-command",
+  //     "code --reuse-window -g \"%{input}:%{line}\"",
+  //     "%PDF%"
+  // ],
+  // "latex-workshop.view.pdf.external.synctex.command": "zathura",
+  // "latex-workshop.view.pdf.external.synctex.args": [
+  //     "--synctex-forward=%LINE%:0:%TEX%",
+  //     "%PDF%"
+  // ],
+  "editor.acceptSuggestionOnEnter": "off",
+  "latex-workshop.view.pdf.viewer": "tab",
+  "search.exclude": {
+    "!**/resources": true,
+    "**/.eslintcache": true,
+    "**/.mypy_cache": true,
+    "**/*.lock": true,
+    "**/*.log": true,
+    "**/*.tsbuildinfo": true,
+    "**/build": true,
+    "**/dist": true,
+    "**/dump": true,
+    "**/dumps": true,
+    "**/manifest.json": true,
+    "**/yarn-error.log": true
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "window.menuBarVisibility": "toggle",
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "redhat.telemetry.enabled": false,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "git.inputValidationSubjectLength": null,
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
+  },
+  "files.eol": "\n",
+  "editor.inlineSuggest.enabled": true,
+  "github.copilot.enable": {
+    "*": true,
+    "plaintext": true,
+    "markdown": true,
+    "scminput": false,
+    "yaml": true,
+    "python": true,
+    "rust": true
+  },
+  "python.languageServer": "Pylance",
+  "explorer.confirmDelete": false,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "vs-kubernetes": {
+    "disable-linters": ["resource-limits"]
+  },
+  "[sql]": {
+    "editor.defaultFormatter": "bradymholt.pgformatter"
+  },
+  "editor.selectionClipboard": false,
+  "markdown.extension.toc.updateOnSave": false,
+  "gitlens.codeLens.scopes": ["document"],
+  "gitlens.currentLine.enabled": false,
+  "gitlens.hovers.currentLine.over": "line",
+  "gitlens.hovers.enabled": false,
+  "files.participants.timeout": 10000,
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[dockerfile]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "workbench.tree.indent": 15,
+  "workbench.tree.renderIndentGuides": "always",
+  "[dockercompose]": {
+    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+  },
+  "git.enableCommitSigning": true,
+  "git.suggestSmartCommit": false,
+  "tailwindCSS.experimental.classRegex": [
+    // "clsx\\(\\s*[`'\"]([^`)]*)[`'\"]\\s*\\)",
+    // "classnames\\(([^)]*)\\)",
+    // ["[cC]lass(es)? \\=([^;]*);", "'([^']*)'"],
+    // ["[cC]lass(es)? \\=([^;]*);", "\"([^\"]*)\""],
+    // ["[cC]lass(es)? \\=([^;]*);", "\\`([^\\`]*)\\`"]
+  ],
+  "flake8.args": ["--ignore", "E501,W503"],
+  "githubPullRequests.pullBranch": "never",
+  "githubPullRequests.createOnPublishBranch": "never",
+  "git.openRepositoryInParentFolders": "always",
+  "highlight-icemode.backgroundColor": "",
+  "debug.confirmOnExit": "always",
+  "terminal.integrated.confirmOnExit": "always",
+  "tailwind-fold.autoFold": false,
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "editor.smoothScrolling": true,
+  "editor.stickyScroll.enabled": true,
+  "[jinja-html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "python.analysis.inlayHints.pytestParameters": true,
+  "testing.automaticallyOpenPeekView": "never",
+  "mypy.runUsingActiveInterpreter": true,
+  "ruff.args": [
+    "--unfixable=F401",
+    "--unfixable=F841",
+    "--unfixable=E731"
+  ],
+  "testing.openTesting": "openOnTestFailure",
+  "window.zoomLevel": -1
 }

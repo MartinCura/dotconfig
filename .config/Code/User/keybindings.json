@@ -52,8 +52,26 @@
     "command": "-workbench.action.navigateForward"
   },
   {
-    "key": "ctrl+up",
+    "key": "ctrl+k ctrl+up",
     "command": "git.stage",
     "when": "workbench.scm.active"
+  },
+  {
+    "key": "alt+down",
+    "command": "-block-travel.jumpDown",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "alt+up",
+    "command": "-block-travel.jumpUp",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "shift+alt+right",
+    "command": "workbench.action.navigateEditorGroups"
+  },
+  {
+    "key": "shift+alt+left",
+    "command": "workbench.action.navigateEditorGroups"
   }
 ]

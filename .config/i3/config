@@ -555,3 +555,6 @@ for_window [class="Android Emulator"] floating enable
 for_window [instance="crx_bgdbmehlmdmddlgneophbcddadgknlpm"] mark --add linear, floating enable, move scratchpad, scratchpad show
 bindsym $mod+m [con_mark="linear"] scratchpad show
 bindsym $mod+Shift+m exec /usr/bin/chromium --profile-directory=Default --app-id=bgdbmehlmdmddlgneophbcddadgknlpm
+
+## Rofimoji
+bindsym $mod+u exec $HOME/.local/bin/rofimoji

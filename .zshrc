@@ -292,3 +292,15 @@ eval "$(rbenv init -)"
 source ~/.rvm/scripts/rvm
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+# bat
+alias cat='bat'
+batdiff() {
+    git diff --name-only --relative --diff-filter=d | xargs bat --diff
+}
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+alias bathelp='bat --plain --language=help'
+help() {
+    "$@" --help 2>&1 | bathelp
+}
+

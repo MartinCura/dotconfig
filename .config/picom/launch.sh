@@ -13,6 +13,7 @@ LOGFILE="/tmp/picom.log"
 
 # Launch picom
 echo "---" | tee -a ${LOGFILE}
-picom $CONFIG -b --experimental-backends >>${LOGFILE} 2>&1
+#picom $CONFIG -b --experimental-backends >>${LOGFILE} 2>&1
+picom $CONFIG -b >>${LOGFILE} 2>&1
 
 echo "picom launched..."

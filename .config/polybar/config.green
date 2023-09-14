@@ -371,8 +371,8 @@ format-prefix = "MEM "
 [module/volume]
 type = internal/alsa
 
-label-muted = "婢"
-label-muted-background = ${color.cyan}
+label-muted = "🔇"
+;label-muted-background = ${color.cyan}
 label-muted-padding = 2
 
 format-volume = <ramp-volume>
@@ -692,7 +692,7 @@ format-padding = 2
 [module/toggl]
 type = custom/script
 exec = scripts/toggl.sh
-interval = 30
+interval = 5
 format-padding = 2
 
 
