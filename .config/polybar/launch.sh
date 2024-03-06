@@ -5,7 +5,7 @@
 killall -q polybar
 
 # Wait until the processes have been shut down
-while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
+while pgrep -u $UID -x polybar >/dev/null; do sleep 0.1; done
 
 #BARNAME=main
 BARNAME=minimalist
@@ -18,7 +18,7 @@ cd ~/.config/polybar
 
 # Launch polybar(s)
 if type "xrandr"; then
-	for m in $(xrandr --query | grep " connected" | cut -d" " -f1); do
+	for m in $(xrandr --query | grep " connected" | grep -v "None" | cut -d" " -f1); do
 		LOGFILE="/tmp/polybar-$BARNAME-$m.log"
 		echo "---" | tee -a "$LOGFILE"
 		MONITOR=$m polybar $BARNAME --reload -c $CONFIG $OPTS >>${LOGFILE} 2>&1 &

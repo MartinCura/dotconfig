@@ -159,7 +159,7 @@ modules-left = workspaces-mnm currently-playing
 ;calendar-line
 modules-center = date-mnm
 ;mpd light volume-pulse
-modules-right = linear toggl cpu-mnm memory-mnm volume-mnm backlight battery-mnm
+modules-right = linear toggl filesystem cpu-mnm memory-mnm volume-mnm backlight battery-mnm
 ;network-mnm
 
 tray-position = right
@@ -206,8 +206,8 @@ format-background = ${color.shade6}
 ; label-urgent = 
 label-empty = 
 
-label-mode = %mode%
-label-mode-background = #e60053
+label-mode = " %mode% "
+label-mode-background = #e66053
 
 ; focused = Active workspace on focused monitor
 label-focused = %icon%
@@ -233,7 +233,7 @@ label-unfocused-background = ${color.shade6}
 
 label-urgent = %icon%
 label-urgent-padding = 2
-label-urgent-background = ${color.orange}
+label-urgent-background = ${color.deep-orange}
 
 label-separator = "|"
 label-separator-background = ${color.shade6}
@@ -267,7 +267,7 @@ label-unfocused-padding = 1
 label-urgent-padding = 1
 label-separator = " "
 label-separator-padding = 0
-label-separator-background = 
+label-separator-background =
 
 
 [module/mpd]
@@ -701,6 +701,11 @@ type = custom/script
 exec = scripts/linear_line.sh
 interval = 300
 format-padding = 5
+
+
+[module/filesystem]
+type = internal/fs
+
 
 
 ;== EOF ========================================================

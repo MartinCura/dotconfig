@@ -242,6 +242,26 @@ export NVM_DIR="$HOME/.nvm"
 function enable_nvm_completion {
 	[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 }
+autoload -U add-zsh-hook
+load-nvmrc() {
+  local nvmrc_path
+  nvmrc_path="$(nvm_find_nvmrc)"
+
+  if [ -n "$nvmrc_path" ]; then
+    local nvmrc_node_version
+    nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+
+    if [ "$nvmrc_node_version" = "N/A" ]; then
+      nvm install
+    elif [ "$nvmrc_node_version" != "$(nvm version)" ]; then
+      nvm use --silent
+    fi
+  elif [ -n "$(PWD=$OLDPWD nvm_find_nvmrc)" ] && [ "$(nvm version)" != "$(nvm version default)" ]; then
+    nvm use default --silent
+  fi
+}
+add-zsh-hook chpwd load-nvmrc
+load-nvmrc
 
 # dat
 export PATH="$PATH:/home/martin/.dat/releases/dat-14.0.2-linux-x64"
@@ -298,9 +318,39 @@ alias cat='bat'
 batdiff() {
     git diff --name-only --relative --diff-filter=d | xargs bat --diff
 }
-export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+#export MANPAGER="sh -c 'col -bx | bat -l man -p'"
 alias bathelp='bat --plain --language=help'
 help() {
     "$@" --help 2>&1 | bathelp
 }
 
+
+# pnpm
+export PNPM_HOME="/home/martin/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+source ~/.rvm/scripts/rvm
+
+# bun completions
+[ -s "/home/martin/.bun/_bun" ] && source "/home/martin/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# edgedb
+fpath+=~/.zfunc
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/opt/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/opt/google-cloud-sdk/completion.zsh.inc' ]; then . '/opt/google-cloud-sdk/completion.zsh.inc'; fi
+
+# autojump
+[[ -s /usr/share/autojump/autojump.zsh ]] && source /usr/share/autojump/autojump.zsh
+
+compinit

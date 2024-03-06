@@ -36,15 +36,18 @@
     "**/target": true
   },
   "editor.minimap.enabled": false,
-  "workbench.colorTheme": "One Dark Pro",
-  "editor.fontFamily": "Fira Code",
+  "workbench.colorTheme": "One Dark Pro Darker",
+  // "editor.fontFamily": "Fira Code",
+  // "editor.fontLigatures": true,
+  // "editor.fontFamily": "'Monaspace Neon', 'Fira Code', monospace",
+  "editor.fontFamily": "'Monaspace Argon', 'Fira Code', monospace",
+  "editor.fontLigatures": "'calt', 'liga', 'dlig', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08'",
+  "editor.fontSize": 13,
 
   "[makefile]": {
     "editor.tabSize": 4,
     "editor.insertSpaces": false
   },
-  "editor.fontLigatures": true,
-  "editor.fontSize": 15,
   "workbench.list.smoothScrolling": true,
   "files.associations": {
     ".prettierrc.json": "json",
@@ -58,16 +61,16 @@
     "editor.suggest.insertMode": "replace",
     "editor.insertSpaces": true,
     "editor.tabSize": 4,
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[python]": {
     "editor.insertSpaces": true,
     "editor.tabSize": 4,
     "editor.formatOnType": true,
-    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.codeActionsOnSave": {
-      "source.fixAll": true,
-      "source.organizeImports": true
+      "source.fixAll": "explicit",
+      "source.organizeImports": "explicit"
     }
   },
   "swaggerViewer.previewInBrowser": true,
@@ -96,6 +99,7 @@
     "!**/resources": true,
     "**/.eslintcache": true,
     "**/.mypy_cache": true,
+    "**/.next": true,
     "**/*.lock": true,
     "**/*.log": true,
     "**/*.tsbuildinfo": true,
@@ -104,10 +108,9 @@
     "**/dump": true,
     "**/dumps": true,
     "**/manifest.json": true,
+    "**/package-lock.json": true,
+    "**/pnpm-lock.yaml": true,
     "**/yarn-error.log": true
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -120,14 +123,11 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "redhat.telemetry.enabled": false,
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "git.inputValidationSubjectLength": null,
   "[yaml]": {
@@ -146,7 +146,6 @@
   },
   "python.languageServer": "Pylance",
   "explorer.confirmDelete": false,
-  "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
   "vs-kubernetes": {
     "disable-linters": ["resource-limits"]
@@ -167,14 +166,18 @@
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
-  "workbench.tree.indent": 15,
+  "workbench.tree.indent": 16,
   "workbench.tree.renderIndentGuides": "always",
   "[dockercompose]": {
-    "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "git.enableCommitSigning": true,
   "git.suggestSmartCommit": false,
+  "tailwindCSS.includeLanguages": {
+    "plaintext": "html"
+  },
   "tailwindCSS.experimental.classRegex": [
+    // ["clsx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
     // "clsx\\(\\s*[`'\"]([^`)]*)[`'\"]\\s*\\)",
     // "classnames\\(([^)]*)\\)",
     // ["[cC]lass(es)? \\=([^;]*);", "'([^']*)'"],
@@ -193,16 +196,27 @@
   "editor.smoothScrolling": true,
   "editor.stickyScroll.enabled": true,
   "[jinja-html]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.html-language-features"
   },
   "python.analysis.inlayHints.pytestParameters": true,
   "testing.automaticallyOpenPeekView": "never",
-  "mypy.runUsingActiveInterpreter": true,
-  "ruff.args": [
+  "ruff.lint.args": [
     "--unfixable=F401",
     "--unfixable=F841",
     "--unfixable=E731"
   ],
   "testing.openTesting": "openOnTestFailure",
-  "window.zoomLevel": -1
+  "mypy.runUsingActiveInterpreter": true,
+  "debug.openDebug": "openOnSessionStart",
+  "githubPullRequests.commentExpandState": "collapseAll",
+  "update.mode": "none",
+  "python.testing.pytestEnabled": true,
+  "mypy.dmypyExecutable": "${workspaceFolder}/.venv/bin/dmypy",
+  "python.analysis.autoFormatStrings": true,
+  "python.experiments.enabled": false,
+  "window.zoomLevel": -1,
+  "files.trimTrailingWhitespace": true,
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
