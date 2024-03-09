@@ -113,6 +113,7 @@ export LANG=en_US.UTF-8
 HISTSIZE=10000000
 SAVEHIST=$HISTSIZE
 
+fpath+=~/.zfunc
 # Enable bashcompinit for completions
 autoload -U +X bashcompinit && bashcompinit
 
@@ -274,3 +275,15 @@ source <(kubectl completion zsh)
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+
+# bun completions
+[ -s "/home/martin/.oh-my-zsh/completions/_bun" ] && source "/home/martin/.oh-my-zsh/completions/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+

@@ -5,15 +5,19 @@
     "editor.suggestSelection": "first",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "files.exclude": {
+        "**/__pycache__": true,
         "**/.~lock*": true,
         "**/.classpath": true,
         "**/.factorypath": true,
+        "**/.mypy_cache": true,
         "**/.nyc_output": true,
         "**/.project": true,
+        "**/.pytest_cache": true,
         "**/.tags": true,
         "**/.tags1": true,
         "**/.yarn": true,
         "**/*.map": true,
+        "**/htmlcov": true,
         "**/swagger-ui-*.js": true,
         "**/swagger-ui.css": true,
         "**/swagger-ui.js": true
@@ -29,7 +33,6 @@
         "**/dist": true
     },
     "editor.minimap.enabled": false,
-    "workbench.colorTheme": "One Dark Pro",
     "editor.fontFamily": "Fira Code",
 
     "[makefile]": {
@@ -42,7 +45,8 @@
     "workbench.list.smoothScrolling": true,
     "files.associations": {
         ".prettierrc.json": "json",
-        "*.json": "jsonc"
+        "*.json": "jsonc",
+        ".env*": "dotenv"
     },
 
     "[json]": {
@@ -56,7 +60,8 @@
     },
     "[python]": {
         "editor.insertSpaces": true,
-        "editor.tabSize": 4
+        "editor.tabSize": 4,
+        "editor.formatOnType": true
     },
     "python.analysis.disabled": [
         "unresolved-import"
@@ -95,12 +100,12 @@
         "**/yarn-error.log": true
     },
     "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "biomejs.biome"
     },
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
-    "window.menuBarVisibility": "compact",
+    "window.menuBarVisibility": "toggle",
     "[html]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
@@ -108,15 +113,14 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "redhat.telemetry.enabled": false,
-    "files.insertFinalNewline": true,
     "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "biomejs.biome"
     },
     "[markdown]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[jsonc]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+        "editor.defaultFormatter": "biomejs.biome"
     },
     "git.inputValidationSubjectLength": null,
     "[yaml]": {
@@ -126,19 +130,49 @@
     "editor.inlineSuggest.enabled": true,
     "github.copilot.enable": {
         "*": true,
-        "yaml": false,
-        "plaintext": false,
-        "markdown": false,
+        "yaml": true,
+        "plaintext": true,
+        "markdown": true,
         "python": true
     },
     "python.languageServer": "Pylance",
     "explorer.confirmDelete": false,
     "files.trimTrailingWhitespace": true,
-    "workbench.sideBar.location": "right",
-    "diffEditor.ignoreTrimWhitespace": false,
     "python.formatting.provider": "black",
     "python.venvFolders": [
         ".cache/pypoetry",
         ".cache/pypoetry/virtualenvs"
     ],
+    "files.insertFinalNewline": true,
+    "vs-kubernetes": {
+        "disable-linters": ["resource-limits"],
+    },
+    "[sql]": {
+        "editor.defaultFormatter": "bradymholt.pgformatter"
+    },
+    "editor.selectionClipboard": false,
+    "editor.stickyScroll.enabled": true,
+    "[dockercompose]": {
+        "editor.defaultFormatter": "ms-azuretools.vscode-docker"
+    },
+    "workbench.preferredDarkColorTheme": "Monokai Dimmed",
+    "git.openRepositoryInParentFolders": "always",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.completeFunctionParens": true,
+    "python.analysis.inlayHints.pytestParameters": true,
+    "python.linting.banditEnabled": true,
+    "python.linting.banditArgs": [
+        "-c",
+        "bandit.yaml"
+    ],
+    "python.defaultInterpreterPath": ".venv/bin/python",
+    "python.testing.pytestArgs": [
+        "--no-cov"
+    ],
+    "prettier.enableDebugLogs": true,
+    "prettier.configPath": ".prettierrc.js",
+    "mypy.runUsingActiveInterpreter": true,
+    "mypy.enabled": false,
+    "workbench.colorTheme": "One Dark Pro",
+    "tailwind-fold.autoFold": true,
 }

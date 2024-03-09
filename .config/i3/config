@@ -44,6 +44,8 @@ bindsym $mod+x exec rofi -show window -lines 10 -font "Fantasque Sans Mono 27" -
 #bindsym $mod+Shift+z exec nop
 #bindsym --release Tab exec --no-startup-id sleep 1 && setxkbmap -option grab:break_actions && xdotool key XF86Ungrab && xdotool click --clearmodifiers 3 && sleep 1 && xdotool key Up Up Up Return
 
+workspace_layout tabbed
+
 # change focus
 bindsym $mod+j          focus left
 bindsym $mod+k          focus down
@@ -232,8 +234,10 @@ exec xinput set-float-prop "MOSART Semi. 2.4G Wireless Mouse" "libinput Accel Sp
 # Screenshot custom region and copy to clipboard
 #bindsym --release Print             exec             scrot -s -p -f --line 'style=dash' -e 'xclip -selection clipboard -target image/png -i $f && mkdir -p /tmp/Screenshots       && mv $f /tmp/Screenshots/'
 #bindsym --release Print             exec             scrot -s -e 'xclip -selection clipboard -target image/png -i $f && rm $f'
-bindsym --release Print             exec  mkdir -p /tmp/Screenshots/ && scrot -s -p -f --line 'style=dash' "/tmp/Screenshots/$(date +"%Y-%m-%dT_%H:%M:%SZ").png" && sleep 0.6 && xclip -selection clipboard -target image/png -i "$(ls -Art /tmp/Screenshots/* | tail -n 1)"
-bindsym --release Ctrl+Shift+Print  exec  sleep 3 && setxkbmap -option grab:break_actions && xdotool key XF86Ungrab && scrot -s -f --line 'style=dash' -e 'xclip -selection clipboard -target image/png -i $f && mkdir -p ~/Pictures/Screenshots && mv $f ~/Pictures/Screenshots/'
+#bindsym --release Print             exec  mkdir -p /tmp/Screenshots/ && scrot -s -p -f --line 'style=dash' "/tmp/Screenshots/$(date +"%Y-%m-%dT_%H:%M:%SZ").png" && sleep 0.6 && xclip -selection clipboard -target image/png -i "$(ls -Art /tmp/Screenshots/* | tail -n 1)"
+#bindsym --release Ctrl+Shift+Print  exec  sleep 3 && setxkbmap -option grab:break_actions && xdotool key XF86Ungrab && scrot -s -f --line 'style=dash' -e 'xclip -selection clipboard -target image/png -i $f && mkdir -p ~/Pictures/Screenshots && mv $f ~/Pictures/Screenshots/'
+bindsym --release Print             exec  mkdir -p /tmp/screenshots && flameshot gui --path /tmp/screenshots
+bindsym --release Ctrl+Shift+Print  exec  mkdir -p /tmp/screenshots && flameshot gui --path /tmp/screenshots --delay 5000
 #bindsym --release Ctrl+Shift+Print  exec  sleep 4 && scrot -s -e 'xclip -selection clipboard -target image/png -i $f && rm $f'
 
 # Sreen brightness controls
@@ -263,11 +267,10 @@ bindsym XF86AudioNext exec playerctl --ignore-player=vlc next
 # Night light through Redshift
 exec redshift
 
-# Switch to next workspace
-bindsym $mod+grave              workspace next
+# Toggling between workspaces
+bindsym $mod+grave              workspace back_and_forth
 bindsym $mod+Shift+grave        workspace prev
-# Switch to previously focused workspace
-bindsym $mod+Ctrl+grave         workspace back_and_forth
+bindsym $mod+Ctrl+grave         workspace next
 
 ## background
 ##exec --no-startup-id xsetroot -solid "#121212"
@@ -301,9 +304,9 @@ gaps inner 9
 
 smart_gaps inverse_outer
 
-workspace $ws2 gaps inner 0
-workspace $ws2 gaps horizontal 310
-workspace $ws2 gaps vertical 0
+#workspace $ws2 gaps inner 0
+#workspace $ws2 gaps horizontal 310
+#workspace $ws2 gaps vertical 0
 workspace $ws7 gaps horizontal 150
 workspace $ws7 gaps vertical 70
 workspace $ws7 gaps inner 100
@@ -443,7 +446,7 @@ bindsym $mod+z exec nautilus
 bindsym $mod+Shift+f fullscreen toggle global
 
 # start gnome calculator windows as floating
-for_window [class="Gnome-calculator"] floating enable
+for_window [class="gnome-calculator"] floating enable
 
 ## scratchpad
 # move currently focused window to scratchpad
@@ -537,6 +540,14 @@ for_window [class="Android Emulator"] floating enable
 # always start in scratchpad
 for_window [class="^ClickUp"] mark --add clickup, floating enable, move scratchpad, scratchpad hide
 # keybind to show or hind it
-bindsym $mod+m [con_mark="clickup"] scratchpad show
+#bindsym $mod+m [con_mark="clickup"] scratchpad show
 # keybind to launch it
-bindsym $mod+Shift+m exec /usr/local/bin/ClickUp
+#bindsym $mod+Shift+m exec /usr/local/bin/ClickUp
+
+## Linear.app
+for_window [instance="crx_bgdbmehlmdmddlgneophbcddadgknlpm"] mark --add linear, floating enable, move scratchpad, scratchpad show
+bindsym $mod+m [con_mark="linear"] scratchpad show
+bindsym $mod+Shift+m exec /usr/bin/google-chrome --directory=Default --app-id=bgdbmehlmdmddlgneophbcddadgknlpm
+
+exec_always --no-startup-id xinput set-prop 15 'libinput Tapping Enabled' 1
+
