@@ -1,0 +1,18 @@
+gui:
+  #wrapMainPanel: false
+  legacySortContainers: true
+  expandFocusedSidePanel: true
+  scrollHeight: 5
+  sidePanelWidth: 0.27
+  containerStatusHealthStyle: "icon"
+commandTemplates:
+  dockerCompose: docker compose
+logs:
+  timestamps: false
+  since: '' # set to '' to show all logs
+  tail: '500' # set to 200 to show last 200 lines of logs
+# Can add replacements like so:
+replacements:
+  imageNamePrefixes:
+    # '123456789012.dkr.ecr.us-east-1.amazonaws.com': '<prod>'
+    'us-central1-docker.pkg.dev/drlarosa-data': '<dlr-prod>'

@@ -2,7 +2,7 @@
   "files.trimFinalNewlines": true,
   "editor.lineNumbers": "interval",
   "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  // "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "files.exclude": {
     "**/__pycache__": true,
     "**/.~lock*": true,
@@ -27,7 +27,7 @@
   "editor.autoClosingQuotes": "never",
   "editor.tabSize": 2,
   // "python.jediEnabled": false,
-  "java.errors.incompleteClasspath.severity": "ignore",
+  // "java.errors.incompleteClasspath.severity": "ignore",
   "files.watcherExclude": {
     "**/.ammonite": true,
     "**/.bloop": true,
@@ -43,7 +43,6 @@
   "editor.fontFamily": "'Monaspace Argon', 'Fira Code', monospace",
   "editor.fontLigatures": "'calt', 'liga', 'dlig', 'ss01', 'ss02', 'ss03', 'ss04', 'ss05', 'ss06', 'ss07', 'ss08'",
   "editor.fontSize": 13,
-
   "[makefile]": {
     "editor.tabSize": 4,
     "editor.insertSpaces": false
@@ -53,7 +52,6 @@
     ".prettierrc.json": "json",
     "*.json": "jsonc"
   },
-
   "[json]": {
     "editor.quickSuggestions": {
       "strings": true
@@ -110,7 +108,8 @@
     "**/manifest.json": true,
     "**/package-lock.json": true,
     "**/pnpm-lock.yaml": true,
-    "**/yarn-error.log": true
+    "**/yarn-error.log": true,
+    "tmp/": true
   },
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -137,7 +136,7 @@
   "editor.inlineSuggest.enabled": true,
   "github.copilot.enable": {
     "*": true,
-    "plaintext": true,
+    "plaintext": false,
     "markdown": true,
     "scminput": false,
     "yaml": true,
@@ -148,14 +147,18 @@
   "explorer.confirmDelete": false,
   "files.insertFinalNewline": true,
   "vs-kubernetes": {
-    "disable-linters": ["resource-limits"]
+    "disable-linters": [
+      "resource-limits"
+    ]
   },
   "[sql]": {
     "editor.defaultFormatter": "bradymholt.pgformatter"
   },
   "editor.selectionClipboard": false,
   "markdown.extension.toc.updateOnSave": false,
-  "gitlens.codeLens.scopes": ["document"],
+  "gitlens.codeLens.scopes": [
+    "document"
+  ],
   "gitlens.currentLine.enabled": false,
   "gitlens.hovers.currentLine.over": "line",
   "gitlens.hovers.enabled": false,
@@ -166,7 +169,7 @@
   "[dockerfile]": {
     "editor.defaultFormatter": "ms-azuretools.vscode-docker"
   },
-  "workbench.tree.indent": 16,
+  "workbench.tree.indent": 12,
   "workbench.tree.renderIndentGuides": "always",
   "[dockercompose]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -184,7 +187,10 @@
     // ["[cC]lass(es)? \\=([^;]*);", "\"([^\"]*)\""],
     // ["[cC]lass(es)? \\=([^;]*);", "\\`([^\\`]*)\\`"]
   ],
-  "flake8.args": ["--ignore", "E501,W503"],
+  // "flake8.args": [
+  //   "--ignore",
+  //   "E501,W503"
+  // ],
   "githubPullRequests.pullBranch": "never",
   "githubPullRequests.createOnPublishBranch": "never",
   "git.openRepositoryInParentFolders": "always",
@@ -195,6 +201,7 @@
   "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
   "editor.smoothScrolling": true,
   "editor.stickyScroll.enabled": true,
+  "editor.stickyScroll.defaultModel": "foldingProviderModel",
   "[jinja-html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
   },
@@ -206,20 +213,39 @@
     "--unfixable=E731"
   ],
   "testing.openTesting": "openOnTestFailure",
-  "mypy.runUsingActiveInterpreter": true,
   "debug.openDebug": "openOnSessionStart",
   "githubPullRequests.commentExpandState": "collapseAll",
   "update.mode": "none",
   "python.testing.pytestEnabled": true,
-  "mypy.dmypyExecutable": "${workspaceFolder}/.venv/bin/dmypy",
+  // "mypy.runUsingActiveInterpreter": true,
+  // "mypy.dmypyExecutable": "${workspaceFolder}/.venv/bin/dmypy",
   "python.analysis.autoFormatStrings": true,
   "python.experiments.enabled": false,
-  "window.zoomLevel": -1,
   "files.trimTrailingWhitespace": true,
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+  "window.zoomLevel": -0.75,
+  "[mdx]": {
+    "editor.defaultFormatter": "unifiedjs.vscode-mdx",
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "editor.suggestOnTriggerCharacters": false,
+    "editor.quickSuggestions": {
+      "other": false,
+      "comments": false,
+      "strings": false,
+    },
+  },
+  "prisma.showPrismaDataPlatformNotification": false,
+  // "window.titleBarStyle": "custom",
+  // "workbench.activityBar.location": "top",
+  // wayou.vscode-todo-highlight
+  // "todohighlight.keywordsPattern": "logger\\.info\\(",
+  // "todohighlight.defaultStyle": {
+  //   "color": "#d25a4c80",
+  //   "backgroundColor": "#ffffff00"
+  // },
 }

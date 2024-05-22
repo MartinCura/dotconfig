@@ -157,11 +157,12 @@ monitor = ${env:MONITOR:}
 
 modules-left = workspaces-mnm currently-playing
 ;calendar-line
-modules-center = date-mnm
+modules-center = date-mnm date-mnm-eu
 ;mpd light volume-pulse
 modules-right = linear toggl filesystem cpu-mnm memory-mnm volume-mnm backlight battery-mnm
 ;network-mnm
 
+height = 18
 tray-position = right
 ;width = 99.5%
 width = 100%
@@ -654,6 +655,12 @@ inherit = module/date
 time = "   %H:%M:%S"
 
 
+[module/date-mnm-eu]
+type = custom/script
+exec = scripts/date_alt_tz.sh
+interval = 1
+
+
 [module/powermenu]
 type = custom/text
 content = 襤
@@ -692,8 +699,9 @@ format-padding = 2
 [module/toggl]
 type = custom/script
 exec = scripts/toggl.sh
-interval = 5
-format-padding = 2
+interval = 3
+format-padding = 1
+format-background = #60ff0000
 
 
 [module/linear]
